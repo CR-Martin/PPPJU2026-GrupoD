@@ -13,8 +13,7 @@ public class InputManager : MonoBehaviour
     public void OnMove(InputValue inputValue)
     {
         var movementInput = inputValue.Get<Vector2>();
-        Debug.Log(movementInput);
-        MovePlayer(movementInput);
+        //MovePlayer(movementInput);
     }
 
     public void OnLook(InputValue inputValue)
@@ -27,6 +26,6 @@ public class InputManager : MonoBehaviour
     public void OnAttack(InputValue inputValue) 
     {
        // Debug.Log("attack");
-        Attack();
+        //Attack();
     }
 }

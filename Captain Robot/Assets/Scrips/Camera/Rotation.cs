@@ -2,46 +2,38 @@ using UnityEngine;
 
 public class Rotation : MonoBehaviour
 {
-    [SerializeField] Camera _camera;
 
-    private Vector3 MouseRot;
+    [SerializeField] private Camera cam;
+    [SerializeField] private Transform target;
+    [SerializeField] private float distanceToTarget = 10;
 
-    private void OnEnable()
-    {
-        InputManager.Attack += CameraMovement;
-    }
-
-    private void OnDisable()
-    {
-        InputManager.Attack -= CameraMovement;
-    }
+    private Vector3 previousPosition;
 
     void Update()
     {
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    MouseRot = _camera.ScreenToViewportPoint(Input.mousePosition);
+        cam.transform.position = target.position;
+        cam.transform.Translate(new Vector3(0, 0, -distanceToTarget));
 
-        //}
+        if (Input.GetMouseButtonDown(0))
+        {
+            previousPosition = cam.ScreenToViewportPoint(Input.mousePosition);
+        }
+        else if (Input.GetMouseButton(0))
+        {
+            Vector3 newPosition = cam.ScreenToViewportPoint(Input.mousePosition);
+            Vector3 direction = previousPosition - newPosition;
 
-        //if (Input.GetMouseButtonDown(0))
-        //{
+            float rotationAroundYAxis = -direction.x * 180; // camera moves horizontally
+            float rotationAroundXAxis = direction.y * 180; // camera moves vertically
 
-        //    Vector3 direction = MouseRot - _camera.ScreenToViewportPoint(Input.mousePosition);
+            cam.transform.position = target.position;
 
-        //    _camera.transform.position = new Vector3();
+            cam.transform.Rotate(new Vector3(1, 0, 0), rotationAroundXAxis);
+            cam.transform.Rotate(new Vector3(0, 1, 0), rotationAroundYAxis, Space.World);
 
-        //    _camera.transform.Rotate(new Vector3(1, 0, 0), direction.y * 180);
-        //    _camera.transform.Rotate(new Vector3(0, 1, 0), direction.y * 180);
-        //    _camera.transform.Translate(0, 0, -10);
+            cam.transform.Translate(new Vector3(0, 0, -distanceToTarget));
 
-        //    MouseRot = _camera.ScreenToViewportPoint(Input.mousePosition);
-        //}
-    }
-
-    public void CameraMovement()
-    {
-        //MouseRot = inputValue;
-       
+            previousPosition = newPosition;
+        }
     }
 }

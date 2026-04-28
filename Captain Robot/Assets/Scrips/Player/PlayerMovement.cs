@@ -1,47 +1,41 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Setup")]
-    [SerializeField] private Rigidbody rigidBody;
+    private Rigidbody rigidbody;
+    private Vector3 _moveDirection;
 
-    [Header("Movement")]
-    [SerializeField] private float movementSpeed = 10f;
-
-    private Vector3 _currentMovement;
+    [SerializeField] private float horizontalAcceleration;
+    [SerializeField] private float maxSpeed;
 
     float Myfloat;
 
-    private void OnEnable()
+
+    private void Awake()
     {
-        rigidBody ??= GetComponent<Rigidbody>();
-        InputManager.MovePlayer += Movement;
+        rigidbody = GetComponent<Rigidbody>();
     }
 
-
-    private void OnDisable()
-    {
-        InputManager.MovePlayer -= Movement;
-    }
 
     private void FixedUpdate()
     {
-        if (_currentMovement.magnitude >= 1f)
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
+
+        _moveDirection = (transform.right * moveHorizontal + transform.forward * moveVertical).normalized;
+
+        Vector3 horizontalVelocity = new Vector3(GetComponent<Rigidbody>().linearVelocity.x, 0f, GetComponent<Rigidbody>().linearVelocity.z);
+
+        horizontalVelocity += _moveDirection * (horizontalAcceleration * Time.fixedDeltaTime);
+
+        if (horizontalVelocity.magnitude >= maxSpeed)
         {
-            rigidBody.MovePosition((Vector3)transform.position + _currentMovement * 10 * Time.deltaTime);
-            float Angle = Mathf.Atan2(_currentMovement.x, _currentMovement.z) * Mathf.Rad2Deg;
-            float Smooth = Mathf.SmoothDampAngle(transform.eulerAngles.y, Angle, ref Myfloat, 0.1f);
-            transform.rotation = Quaternion.Euler(0, Smooth, 0);
-
-
+            horizontalVelocity = horizontalVelocity.normalized * maxSpeed;
         }
 
+        GetComponent<Rigidbody>().linearVelocity = new Vector3(horizontalVelocity.x, GetComponent<Rigidbody>().linearVelocity.y, horizontalVelocity.z);
     }
 
-    public void Movement(Vector2 direction)
-    {
-        var movementInput = direction;
 
-        _currentMovement = new Vector3(movementInput.x, 0, movementInput.y);
-    }
 }
