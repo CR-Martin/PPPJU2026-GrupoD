@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+
     public void Jugar()
     {
         SceneManager.LoadScene("inGame");
@@ -13,9 +14,19 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Abrir opciones");
     }
 
+    public void Creditos()
+    {
+        SceneManager.LoadScene("Credits");
+    }
+
+    public void SalirCreditos()
+    {
+        SceneManager.LoadScene("mainMenu");
+    }
+
     public void Salir()
     {
-        Application.Quit();
         Debug.Log("Salir del juego");
+        Application.Quit();
     }
 }
