@@ -11,7 +11,7 @@ public class MainMenu : MonoBehaviour
 
     public void Opciones()
     {
-        Debug.Log("Abrir opciones");
+        Debug.Log("SIN HACER. Abrir opciones");
     }
 
     public void Creditos()
