@@ -597,7 +597,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Art/Models/kenney_platformer-kit/Models/OBJ format
+    - Assets
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -619,12 +619,7 @@ MonoBehaviour:
     - m_Data: 49014
     m_LastClickedID:
       m_Data: 49014
-    m_ExpandedIDs:
-    - m_Data: 0
-    - m_Data: 46416
-    - m_Data: 46418
-    - m_Data: 46420
-    - m_Data: 46422
+    m_ExpandedIDs: []
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -655,12 +650,7 @@ MonoBehaviour:
     m_SelectedIDs: []
     m_LastClickedID:
       m_Data: 0
-    m_ExpandedIDs:
-    - m_Data: 0
-    - m_Data: 46416
-    - m_Data: 46418
-    - m_Data: 46420
-    - m_Data: 46422
+    m_ExpandedIDs: []
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

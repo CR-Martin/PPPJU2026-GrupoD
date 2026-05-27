@@ -3,38 +3,39 @@ using UnityEngine.EventSystems;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Rigidbody rigidbody;
+    private Rigidbody rb;
     private Vector3 _moveDirection;
 
     [SerializeField] private float horizontalAcceleration;
     [SerializeField] private float maxSpeed;
+    [SerializeField] private Camera cam;
 
     float Myfloat;
 
 
     private void Awake()
     {
-        rigidbody = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
     }
-
+    private void Update()
+    {
+        _moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+    }
 
     private void FixedUpdate()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-
-        _moveDirection = (transform.right * moveHorizontal + transform.forward * moveVertical).normalized;
-
-        Vector3 horizontalVelocity = new Vector3(GetComponent<Rigidbody>().linearVelocity.x, 0f, GetComponent<Rigidbody>().linearVelocity.z);
-
-        horizontalVelocity += _moveDirection * (horizontalAcceleration * Time.fixedDeltaTime);
-
-        if (horizontalVelocity.magnitude >= maxSpeed)
+        if (_moveDirection.magnitude >= 1f)
         {
-            horizontalVelocity = horizontalVelocity.normalized * maxSpeed;
+            float targetAngle = Mathf.Atan2(_moveDirection.x, _moveDirection.z) * Mathf.Rad2Deg + cam.transform.eulerAngles.y;
+
+            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            rb.linearVelocity = moveDir * horizontalAcceleration + Vector3.up * rb.linearVelocity.y;
+        }
+        else
+        {
+            rb.linearVelocity = new Vector3(0f, rb.linearVelocity.y, 0f);
         }
 
-        GetComponent<Rigidbody>().linearVelocity = new Vector3(horizontalVelocity.x, GetComponent<Rigidbody>().linearVelocity.y, horizontalVelocity.z);
     }
 
 
