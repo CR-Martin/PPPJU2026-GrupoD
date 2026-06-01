@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BombPickUp
   collisionTag: Player
   holder: {fileID: 0}
-  bomb: {fileID: 0}
+  playerBomb: {fileID: 4536047557513494555, guid: afe16639c8e97fa49a7803e24785e2ce, type: 3}
 --- !u!65 &7262722388694637238
 BoxCollider:
   m_ObjectHideFlags: 0

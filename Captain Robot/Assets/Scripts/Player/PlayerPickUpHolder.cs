@@ -3,21 +3,32 @@ using UnityEngine;
 
 public class PlayerPickUpHolder : MonoBehaviour
 {
-    [SerializeField] private GameObject spawnPoint;
-    [SerializeField] public Dictionary<string, GameObject> pickUpDataBase = new Dictionary<string, GameObject>();
+    [SerializeField] private Transform spawnPoint;
+    private GameObject currentPickUp;
 
-    private void Start()
+    private void Update()
     {
-        
-    }
-    public void SpawnPickUp(string key)
-    {
-        GameObject temp = pickUpDataBase[key];
-        Instantiate(temp, spawnPoint.transform);
+        if (Input.GetKeyDown(KeyCode.E) && currentPickUp != null)
+        {
+            SpawnItem();
+        }
     }
 
-    public void SpawnPickUp2(GameObject temp)
+    void SpawnItem()
     {
+        IWorldSpawn worldSpawn = currentPickUp.GetComponent<IWorldSpawn>();
+        worldSpawn.WorldSpawn(spawnPoint);
+        //Instantiate(currentPickUp, spawnPoint.transform);
+        currentPickUp = null;
+        foreach (Transform child in spawnPoint)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+
+    }
+    public void SpawnPickUp(GameObject temp)
+    {
+        currentPickUp = temp;
         Instantiate(temp, spawnPoint.transform);
     }
 }

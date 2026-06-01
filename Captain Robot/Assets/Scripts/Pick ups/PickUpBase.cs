@@ -8,7 +8,6 @@ public abstract class PickUpBase : MonoBehaviour
     public PlayerPickUpHolder holder;
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collision");
         if (collision.gameObject.tag == collisionTag)
         {
             holder = collision.gameObject.GetComponent<PlayerPickUpHolder>();
@@ -17,4 +16,6 @@ public abstract class PickUpBase : MonoBehaviour
     }
 
     abstract public void PickUpBehavior();
+
+
 }

@@ -3,13 +3,11 @@ using UnityEngine.AdaptivePerformance;
 
 public class BombPickUp : PickUpBase
 {
-    private string spawnable = "bomb";
-    [SerializeField] GameObject bomb;
+    [SerializeField] GameObject playerBomb;
 
     public override void PickUpBehavior()
     {
-        holder.SpawnPickUp2(bomb);
-        Debug.Log("Estoy");
+        holder.SpawnPickUp(playerBomb);
         Destroy(this.gameObject);
     }
 

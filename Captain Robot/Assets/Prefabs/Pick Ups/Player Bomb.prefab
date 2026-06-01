@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7394706849840442102}
+  - component: {fileID: 8213996305453523138}
   m_Layer: 0
   m_Name: Player Bomb
   m_TagString: Untagged
@@ -32,6 +33,19 @@ Transform:
   - {fileID: 3894077451924831062}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8213996305453523138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4536047557513494555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35b7ed5868d989949b0c1d4b7d9959a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerBomb
+  bomb: {fileID: 8635556332178711045, guid: c85f3bd132676ef4e8c1456c4ac3e4a6, type: 3}
 --- !u!1001 &3566907748491402429
 PrefabInstance:
   m_ObjectHideFlags: 0

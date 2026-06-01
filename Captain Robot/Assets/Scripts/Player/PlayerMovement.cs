@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_moveDirection.magnitude >= 1f)
+        if (_moveDirection.magnitude >= 0.1f)
         {
             float targetAngle = Mathf.Atan2(_moveDirection.x, _moveDirection.z) * Mathf.Rad2Deg + cam.transform.eulerAngles.y;
 
