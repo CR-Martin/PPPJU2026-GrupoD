@@ -6,6 +6,7 @@ public abstract class PickUpBase : MonoBehaviour
 {
     [SerializeField] private string collisionTag;
     public PlayerPickUpHolder holder;
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == collisionTag)

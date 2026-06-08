@@ -7,8 +7,10 @@ public class BombPickUp : PickUpBase
 
     public override void PickUpBehavior()
     {
-        holder.SpawnPickUp(playerBomb);
-        Destroy(this.gameObject);
+        if (holder.CanPickUp()) return;
+       /* holder.SpawnPickUp(playerBomb);
+        Destroy(this.gameObject);*/
+
     }
 
 }

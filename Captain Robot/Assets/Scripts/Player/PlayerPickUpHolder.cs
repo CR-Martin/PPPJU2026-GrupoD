@@ -6,6 +6,15 @@ public class PlayerPickUpHolder : MonoBehaviour
     [SerializeField] private Transform spawnPoint;
     private GameObject currentPickUp;
 
+    private void OnEnable()
+    {
+        Objectopick.OnTest += SpawnPickUp;
+    }
+
+    private void OnDisable()
+    {
+        Objectopick.OnTest -= SpawnPickUp;
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && currentPickUp != null)
@@ -18,7 +27,6 @@ public class PlayerPickUpHolder : MonoBehaviour
     {
         IWorldSpawn worldSpawn = currentPickUp.GetComponent<IWorldSpawn>();
         worldSpawn.WorldSpawn(spawnPoint);
-        //Instantiate(currentPickUp, spawnPoint.transform);
         currentPickUp = null;
         foreach (Transform child in spawnPoint)
         {
@@ -30,5 +38,11 @@ public class PlayerPickUpHolder : MonoBehaviour
     {
         currentPickUp = temp;
         Instantiate(temp, spawnPoint.transform);
+    }
+
+    public bool CanPickUp()
+    {
+        if (!currentPickUp) return false;
+        return true;
     }
 }
