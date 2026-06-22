@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] PickUpItem pickUpItem;
 
-    public Action OnSpace;
+    //public Action OnSpace;
 
     Item currentItem;
     Item lastItem;
@@ -39,12 +39,9 @@ public class PlayerController : MonoBehaviour
             PlayerDropItem();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && currentItem == null)
+        if (currentItem != null)
         {
-            Debug.Log("Apretamos espacio");
-
-            OnSpace?.Invoke();
-
+            currentItem.transform.forward = this.transform.forward;
         }
     }
 

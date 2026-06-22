@@ -1,12 +1,14 @@
 using UnityEngine;
 using System.Collections;
+using System;
 
 public class Bombs : Item
 {
     private float forceThrow = 1000;
     private int maxTimer = 3;
 
-    public override Item DoAction()
+    public static Action OnExplosion;
+    public override void DoAction()
     {
         transform.SetParent(null);
         KinematicState(false);
@@ -14,7 +16,6 @@ public class Bombs : Item
 
         rb.AddForce(transform.forward * forceThrow);
         StartCoroutine("Explode");
-        return this;
     }
 
     public override void DropItem()
@@ -46,6 +47,8 @@ public class Bombs : Item
                 isHit.TakeDamage();
             }
         }
+        OnExplosion?.Invoke();
+        Destroy(gameObject);
 
         yield return null;
     }

@@ -10,8 +10,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float maxSpeed;
     [SerializeField] private Camera cam;
 
-    float Myfloat;
+    private void OnEnable()
+    {
+        InputManager.OnPlayerMove += MovePlayer;
 
+    }
 
     private void Awake()
     {
@@ -19,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
-        _moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        //_moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
     }
 
     private void FixedUpdate()
@@ -38,4 +41,10 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    void MovePlayer(Vector2 dir)
+    {
+        var movementInput = dir;
+
+        _moveDirection = new Vector3(movementInput.x, 0, movementInput.y);
+    }
 }

@@ -782,7 +782,7 @@ GameObject:
   - component: {fileID: 232122965}
   m_Layer: 0
   m_Name: Bomb
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -968,6 +968,8 @@ GameObject:
   - component: {fileID: 308180815}
   - component: {fileID: 308180825}
   - component: {fileID: 308180824}
+  - component: {fileID: 308180826}
+  - component: {fileID: 308180827}
   m_Layer: 3
   m_Name: Player test
   m_TagString: Player
@@ -1116,6 +1118,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AnimationController
   animator: {fileID: 0}
   rb: {fileID: 0}
+--- !u!114 &308180826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308180814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a21fa22d2d7bb3444ab93791f65044bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputManager
+--- !u!114 &308180827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308180814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
+  m_Actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: 
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &322040639 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fbf5e29e4e257444d8720c0a658e2fcd, type: 3}
@@ -1218,6 +1262,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d91eb25f29bcd124e9ee43f239b737a2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 836969382}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d91eb25f29bcd124e9ee43f239b737a2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 836969384}
   m_SourcePrefab: {fileID: 100100000, guid: d91eb25f29bcd124e9ee43f239b737a2, type: 3}
 --- !u!1001 &346820592
 PrefabInstance:
@@ -1604,7 +1651,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30bf8c38aea1a434090e84211d6e4af1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickUpItem
-  playerController: {fileID: 308180822}
+  playerController: {fileID: 308180826}
 --- !u!1 &590500275
 GameObject:
   m_ObjectHideFlags: 0
@@ -1912,7 +1959,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Back
+  m_text: 'WIN
 
 '
   m_isRightToLeft: 0
@@ -2488,6 +2535,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &836969384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836969380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 021cda60b51e7db4eb11c04f9d08e870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WinPoint
+  colliderTag: Player
 --- !u!4 &853725529 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3bf85d832c8ea4b4195b663cdb39444d, type: 3}
@@ -5228,7 +5288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
   pauseMenu: {fileID: 1778427758}
-  winMenu: {fileID: 0}
+  winMenu: {fileID: 631197546}
   gameOverMenu: {fileID: 0}
 --- !u!4 &2068672474 stripped
 Transform:

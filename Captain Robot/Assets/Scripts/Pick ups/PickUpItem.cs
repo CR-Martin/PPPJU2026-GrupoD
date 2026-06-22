@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class PickUpItem : MonoBehaviour
 {
-    [SerializeField]PlayerController playerController;
+    [SerializeField] InputManager playerController;
     public Action<Item> OnCollision;
 
     RaycastHit hit;
 
-    private float pickUpRange = 5f;
+    private float pickUpRange = 1f;
 
     private void OnEnable()
     {
