@@ -13,6 +13,11 @@ public class UIManager : MonoBehaviour
         WinPoint.OnWinCollition += WinGame;
     }
 
+    private void OnDisable()
+    {
+        WinPoint.OnWinCollition -= WinGame;
+
+    }
     void Update()
     {
         //TODO: MANDA ESTO A UN INPUT MANAGER

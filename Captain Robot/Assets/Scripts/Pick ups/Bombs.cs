@@ -4,7 +4,7 @@ using System;
 
 public class Bombs : Item
 {
-    private float forceThrow = 1000;
+    private float forceThrow = 100;
     private int maxTimer = 3;
 
     public static Action OnExplosion;
