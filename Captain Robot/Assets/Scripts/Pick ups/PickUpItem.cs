@@ -24,8 +24,11 @@ public class PickUpItem : MonoBehaviour
     {
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, pickUpRange))
         {
+            Debug.Log("ray");
             if (hit.transform.gameObject.TryGetComponent(out Item item))
             {
+                Debug.Log("hit");
+
                 OnCollision?.Invoke(item);
 
             }
