@@ -8,6 +8,8 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     private bool immune = false;
 
     private float tempLife;
+    private int standarInmunity = 3;
+    private int extendedInmunity = 10;
 
     public static Action OnGameOver;
     void Start()
@@ -29,13 +31,13 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         if (immune == false)
         {
             tempLife--;
-            StartCoroutine(immunity());
+            StartCoroutine(immunity(standarInmunity));
         }
     }
-    IEnumerator immunity()
+    IEnumerator immunity(int time)
     {
         immune = true;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(time);
         immune = false;
     }
 }
