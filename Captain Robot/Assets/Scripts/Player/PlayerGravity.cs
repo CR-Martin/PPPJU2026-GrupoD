@@ -8,12 +8,12 @@ public class PlayerGravity : MonoBehaviour
 
     private void OnEnable()
     {
-        Inmune.OnInmunity += TurnOffGravity;
+        Wings.OnFlying += TurnOffGravity;
     }
 
     private void OnDisable()
     {
-        Inmune.OnInmunity -= TurnOffGravity;
+        Wings.OnFlying -= TurnOffGravity;
 
     }
 
