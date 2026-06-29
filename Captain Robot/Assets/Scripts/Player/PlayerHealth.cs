@@ -12,12 +12,23 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     private int extendedInmunity = 10;
 
     public static Action OnGameOver;
+
+    private void OnEnable()
+    {
+        Inmune.OnInmunity += LongInmunity;
+    }
+
+    private void OnDisable()
+    {
+        Inmune.OnInmunity -= LongInmunity;
+
+    }
+
     void Start()
     {
         tempLife = maxLife;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (tempLife == 0)
@@ -33,6 +44,12 @@ public class PlayerHealth : MonoBehaviour, IDamageable
             tempLife--;
             StartCoroutine(immunity(standarInmunity));
         }
+    }
+
+    private void LongInmunity()
+    {
+        StartCoroutine(immunity(extendedInmunity));
+
     }
     IEnumerator immunity(int time)
     {

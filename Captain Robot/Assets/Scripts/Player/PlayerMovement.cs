@@ -15,6 +15,11 @@ public class PlayerMovement : MonoBehaviour
         InputManager.OnPlayerMove += MovePlayer;
 
     }
+    private void OnDisable()
+    {
+        InputManager.OnPlayerMove -= MovePlayer;
+
+    }
 
     private void Awake()
     {

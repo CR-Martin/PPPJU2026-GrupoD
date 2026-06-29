@@ -5,12 +5,18 @@ using Unity.VisualScripting;
 
 public class InputManager : MonoBehaviour
 {
-    public Action OnSpace;
 
     [SerializeField] private InputActionReference move;
     [SerializeField] private InputActionReference pickUp;
+    [SerializeField] private InputActionReference drop;
+    [SerializeField] private InputActionReference activate;
+    [SerializeField] private InputActionReference pause;
 
     public static event Action<Vector2> OnPlayerMove;
+    public static event Action OnSpace;
+    public static event Action OnDrop;
+    public static event Action OnActivate;
+    public static event Action OnPause;
 
     private void OnEnable()
     {
@@ -19,8 +25,16 @@ public class InputManager : MonoBehaviour
         move.action.canceled += MovePlayer;
 
         pickUp.action.Enable();
-
         pickUp.action.canceled += PickUpItem;
+
+        drop.action.Enable();
+        drop.action.canceled += DropItem;
+
+        activate.action.Enable();
+        activate.action.canceled += ActivateItem;
+
+        pause.action.Enable();
+        activate.action.canceled += Pause;
 
 
     }
@@ -32,14 +46,20 @@ public class InputManager : MonoBehaviour
         move.action.canceled -= MovePlayer;
 
         pickUp.action.Disable();
-
         pickUp.action.canceled -= PickUpItem;
 
 
+        drop.action.Disable();
+        drop.action.canceled -= DropItem;
 
+        activate.action.Disable();
+        activate.action.canceled -= ActivateItem;
+
+        pause.action.Disable();
+        activate.action.canceled -= Pause;
     }
 
-   
+
 
     private void MovePlayer(InputAction.CallbackContext obj)
     {
@@ -49,24 +69,23 @@ public class InputManager : MonoBehaviour
 
     private void PickUpItem(InputAction.CallbackContext obj)
     {
-        ////Debug.Log("Espace");
         OnSpace?.Invoke();
-
-     
-            Debug.Log("Cancelled");
-      
-
-            //}
-
-            //if (obj.performed)
-            //{
-            //    Debug.Log("performed");
-            //}
-
-
-
     }
 
+    private void DropItem(InputAction.CallbackContext obj)
+    {
+        OnDrop?.Invoke();
+    }
+
+    private void ActivateItem(InputAction.CallbackContext obj)
+    {
+        OnActivate?.Invoke();
+    }
+
+    private void Pause(InputAction.CallbackContext obj)
+    {
+        OnPause?.Invoke();
+    }
     public void OnLook(InputValue inputValue)
     {
 

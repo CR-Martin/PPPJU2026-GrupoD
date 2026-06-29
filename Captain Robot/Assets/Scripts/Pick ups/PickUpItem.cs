@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PickUpItem : MonoBehaviour
 {
-    [SerializeField] InputManager playerController;
+    //[SerializeField] InputManager playerController;
     public Action<Item> OnCollision;
 
     RaycastHit hit;
@@ -12,12 +12,12 @@ public class PickUpItem : MonoBehaviour
 
     private void OnEnable()
     {
-        playerController.OnSpace += DetectPickUp;
+        InputManager.OnSpace += DetectPickUp;
     }
 
     private void OnDisable()
     {
-        playerController.OnSpace -= DetectPickUp;
+        InputManager.OnSpace -= DetectPickUp;
     }
 
     void DetectPickUp()

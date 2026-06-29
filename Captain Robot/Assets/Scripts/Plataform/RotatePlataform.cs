@@ -3,7 +3,7 @@ using System.Collections;
 
 public class RotatePlataform : MonoBehaviour
 {
-    public float rotationSpeed = 90f; // Degrees per second
+    public float rotationSpeed = 90f; 
     public float waitTime = 5f;
 
     private Quaternion startRotation;
@@ -22,16 +22,12 @@ public class RotatePlataform : MonoBehaviour
     {
         while (true)
         {
-            // Rotate to 90 degrees
             yield return RotateTo(targetRotation);
 
-            // Wait
             yield return new WaitForSeconds(waitTime);
 
-            // Rotate back
             yield return RotateTo(startRotation);
 
-            // Wait before repeating (optional)
             yield return new WaitForSeconds(waitTime);
         }
     }

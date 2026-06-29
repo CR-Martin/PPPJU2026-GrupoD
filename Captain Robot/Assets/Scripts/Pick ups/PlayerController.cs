@@ -8,36 +8,27 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] PickUpItem pickUpItem;
 
-    //public Action OnSpace;
 
     Item currentItem;
-    Item lastItem;
     private void OnEnable()
     {
+        InputManager.OnDrop += DropItem;
+        InputManager.OnActivate += ActivateItem;
+
         pickUpItem.OnCollision += PlayerPicker_OnPickUp;
     }
 
     private void OnDisable()
     {
+        InputManager.OnDrop -= DropItem;
+        InputManager.OnActivate -= ActivateItem;
+
         pickUpItem.OnCollision -= PlayerPicker_OnPickUp;
 
     }
-    // Update is called once per frame
+
     void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Q) && currentItem != null)
-        {
-           
-            currentItem.DoAction();
-            PlayerDropItem();
-
-        }
-
-        if (Input.GetKeyDown(KeyCode.E) && currentItem != null)
-        {
-            currentItem.DropItem();
-            PlayerDropItem();
-        }
+    {       
 
         if (currentItem != null)
         {
@@ -57,6 +48,25 @@ public class PlayerController : MonoBehaviour
         item.KinematicState(true);
     }
 
+    public void ActivateItem()
+    {
+
+        if (currentItem != null)
+        {
+            currentItem.DoAction();
+            PlayerDropItem();
+        }
+    }
+    public void DropItem()
+    {
+
+        if (currentItem != null)
+        {
+
+            currentItem.DropItem();
+            PlayerDropItem();
+        }
+    }
     void PlayerDropItem()
     {
         currentItem = null;
