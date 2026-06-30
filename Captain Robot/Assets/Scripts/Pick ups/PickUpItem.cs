@@ -3,29 +3,32 @@ using UnityEngine;
 
 public class PickUpItem : MonoBehaviour
 {
-    [SerializeField]PlayerController playerController;
-    public Action<Item> OnCollision;
+    //[SerializeField] InputManager playerController;
+    public static event Action<Item> OnCollision;
 
     RaycastHit hit;
 
-    private float pickUpRange = 5f;
+    private float pickUpRange = 1f;
 
     private void OnEnable()
     {
-        playerController.OnSpace += DetectPickUp;
+        InputManager.OnSpace += DetectPickUp;
     }
 
     private void OnDisable()
     {
-        playerController.OnSpace -= DetectPickUp;
+        InputManager.OnSpace -= DetectPickUp;
     }
 
     void DetectPickUp()
     {
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, pickUpRange))
         {
+            Debug.Log("ray");
             if (hit.transform.gameObject.TryGetComponent(out Item item))
             {
+                Debug.Log("hit");
+
                 OnCollision?.Invoke(item);
 
             }

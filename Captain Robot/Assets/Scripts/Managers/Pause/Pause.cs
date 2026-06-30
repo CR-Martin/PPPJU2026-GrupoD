@@ -5,14 +5,15 @@ public class Pause : MonoBehaviour
 {
     [SerializeField] GameObject pauseCanvas;
 
-    void Update()
+    private void OnEnable()
     {
-        if (Input.GetKeyUp(KeyCode.Escape) )
-        {
+        InputManager.OnPause += TryPause;
 
-            TryPause();
+    }
 
-        }
+    private void OnDisable()
+    {
+        InputManager.OnPause -= TryPause;
     }
 
     void TryPause()

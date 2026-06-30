@@ -11,8 +11,16 @@ public class UIManager : MonoBehaviour
     private void OnEnable()
     {
         WinPoint.OnWinCollition += WinGame;
+        PlayerHealth.OnGameOver += GameOver;
     }
 
+    private void OnDisable()
+    {
+        WinPoint.OnWinCollition -= WinGame;
+        PlayerHealth.OnGameOver -= GameOver;
+
+
+    }
     void Update()
     {
         //TODO: MANDA ESTO A UN INPUT MANAGER

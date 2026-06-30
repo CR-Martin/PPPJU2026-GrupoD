@@ -10,22 +10,28 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float maxSpeed;
     [SerializeField] private Camera cam;
 
-    float Myfloat;
+    private void OnEnable()
+    {
+        InputManager.OnPlayerMove += MovePlayer;
 
+    }
+    private void OnDisable()
+    {
+        InputManager.OnPlayerMove -= MovePlayer;
+
+    }
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
-    private void Update()
-    {
-        _moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-    }
+  
 
     private void FixedUpdate()
     {
         if (_moveDirection.magnitude >= 0.1f)
         {
+
             float targetAngle = Mathf.Atan2(_moveDirection.x, _moveDirection.z) * Mathf.Rad2Deg + cam.transform.eulerAngles.y;
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
@@ -38,4 +44,10 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    void MovePlayer(Vector2 dir)
+    {
+        var movementInput = dir;
+
+        _moveDirection = new Vector3(movementInput.x, 0, movementInput.y);
+    }
 }

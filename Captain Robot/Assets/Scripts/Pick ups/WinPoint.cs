@@ -12,7 +12,6 @@ public class WinPoint : MonoBehaviour
     {
         if (collision.gameObject.tag == colliderTag)
         {
-            //SceneManager.LoadScene("mainMenu");
             OnWinCollition?.Invoke();
         }
     }

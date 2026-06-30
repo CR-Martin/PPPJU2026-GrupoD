@@ -6,45 +6,34 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] Transform handPosition;
 
-    [SerializeField] PickUpItem pickUpItem;
-
-    public Action OnSpace;
-
     Item currentItem;
-    Item lastItem;
+
+    public static event Action OnPickUp;
+    public static event Action OnDropAction;
+
     private void OnEnable()
     {
-        pickUpItem.OnCollision += PlayerPicker_OnPickUp;
+        InputManager.OnDrop += DropItem;
+        InputManager.OnActivate += ActivateItem;
+
+        PickUpItem.OnCollision += PlayerPicker_OnPickUp;
     }
 
     private void OnDisable()
     {
-        pickUpItem.OnCollision -= PlayerPicker_OnPickUp;
+        InputManager.OnDrop -= DropItem;
+        InputManager.OnActivate -= ActivateItem;
+
+        PickUpItem.OnCollision -= PlayerPicker_OnPickUp;
 
     }
-    // Update is called once per frame
+
     void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Q) && currentItem != null)
+    {       
+
+        if (currentItem != null)
         {
-           
-            currentItem.DoAction();
-            PlayerDropItem();
-
-        }
-
-        if (Input.GetKeyDown(KeyCode.E) && currentItem != null)
-        {
-            currentItem.DropItem();
-            PlayerDropItem();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space) && currentItem == null)
-        {
-            Debug.Log("Apretamos espacio");
-
-            OnSpace?.Invoke();
-
+            currentItem.transform.forward = this.transform.forward;
         }
     }
 
@@ -58,8 +47,32 @@ public class PlayerController : MonoBehaviour
 
         item.transform.localPosition = Vector3.zero;
         item.KinematicState(true);
+        OnPickUp?.Invoke();
     }
 
+    public void ActivateItem()
+    {
+
+        if (currentItem != null)
+        {
+            currentItem.DoAction();
+            PlayerDropItem();
+            OnDropAction?.Invoke();
+
+        }
+    }
+    public void DropItem()
+    {
+
+        if (currentItem != null)
+        {
+
+            currentItem.DropItem();
+            PlayerDropItem();
+            OnDropAction?.Invoke();
+
+        }
+    }
     void PlayerDropItem()
     {
         currentItem = null;
