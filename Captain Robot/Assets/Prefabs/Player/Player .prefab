@@ -76,7 +76,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30bf8c38aea1a434090e84211d6e4af1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickUpItem
-  playerController: {fileID: 4482853443665245492}
 --- !u!135 &2152417644718723499
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -110,6 +109,8 @@ GameObject:
   - component: {fileID: 4762064240762007169}
   - component: {fileID: 8295790603830685150}
   - component: {fileID: 1782923216027570951}
+  - component: {fileID: 2889621065361920068}
+  - component: {fileID: 5233782966803267390}
   - component: {fileID: 1028291742032794351}
   - component: {fileID: 4664497201768229510}
   - component: {fileID: 7538850530443711755}
@@ -178,6 +179,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   handPosition: {fileID: 4327507097518841860}
   pickUpItem: {fileID: 7627078476243904228}
+--- !u!114 &2889621065361920068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6256314387245833018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4af5f84b6756ee7468ff06d20d1c69b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  maxLife: 1
+--- !u!114 &5233782966803267390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6256314387245833018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6fa0eb15a802df4093dbfc6968d84a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerGravity
+  rb: {fileID: 0}
+  maxTime: 3
 --- !u!136 &1028291742032794351
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -276,6 +304,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a21fa22d2d7bb3444ab93791f65044bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputManager
+  move: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  pickUp: {fileID: -2099379676528639254, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  drop: {fileID: 0}
+  activate: {fileID: 0}
+  pause: {fileID: 0}
 --- !u!114 &4847673134428045403
 MonoBehaviour:
   m_ObjectHideFlags: 0

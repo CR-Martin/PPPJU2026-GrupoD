@@ -6,16 +6,17 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] Transform handPosition;
 
-    [SerializeField] PickUpItem pickUpItem;
-
-
     Item currentItem;
+
+    public static event Action OnPickUp;
+    public static event Action OnDropAction;
+
     private void OnEnable()
     {
         InputManager.OnDrop += DropItem;
         InputManager.OnActivate += ActivateItem;
 
-        pickUpItem.OnCollision += PlayerPicker_OnPickUp;
+        PickUpItem.OnCollision += PlayerPicker_OnPickUp;
     }
 
     private void OnDisable()
@@ -23,7 +24,7 @@ public class PlayerController : MonoBehaviour
         InputManager.OnDrop -= DropItem;
         InputManager.OnActivate -= ActivateItem;
 
-        pickUpItem.OnCollision -= PlayerPicker_OnPickUp;
+        PickUpItem.OnCollision -= PlayerPicker_OnPickUp;
 
     }
 
@@ -46,6 +47,7 @@ public class PlayerController : MonoBehaviour
 
         item.transform.localPosition = Vector3.zero;
         item.KinematicState(true);
+        OnPickUp?.Invoke();
     }
 
     public void ActivateItem()
@@ -55,6 +57,8 @@ public class PlayerController : MonoBehaviour
         {
             currentItem.DoAction();
             PlayerDropItem();
+            OnDropAction?.Invoke();
+
         }
     }
     public void DropItem()
@@ -65,6 +69,8 @@ public class PlayerController : MonoBehaviour
 
             currentItem.DropItem();
             PlayerDropItem();
+            OnDropAction?.Invoke();
+
         }
     }
     void PlayerDropItem()

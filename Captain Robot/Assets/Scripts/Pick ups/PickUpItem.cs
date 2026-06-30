@@ -4,7 +4,7 @@ using UnityEngine;
 public class PickUpItem : MonoBehaviour
 {
     //[SerializeField] InputManager playerController;
-    public Action<Item> OnCollision;
+    public static event Action<Item> OnCollision;
 
     RaycastHit hit;
 
