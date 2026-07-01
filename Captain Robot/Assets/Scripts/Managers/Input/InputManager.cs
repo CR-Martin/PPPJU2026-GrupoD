@@ -11,12 +11,25 @@ public class InputManager : MonoBehaviour
     [SerializeField] private InputActionReference drop;
     [SerializeField] private InputActionReference activate;
     [SerializeField] private InputActionReference pause;
+    [SerializeField] private InputActionReference camaraStarted;
+    [SerializeField] private InputActionReference camaraPerformed;
+
+    [SerializeField] private InputActionReference inmuneCheat;
+    [SerializeField] private InputActionReference flyCheat;
+    [SerializeField] private InputActionReference winCheat;
+    [SerializeField] private InputActionReference loseCheat;
 
     public static event Action<Vector2> OnPlayerMove;
     public static event Action OnSpace;
     public static event Action OnDrop;
     public static event Action OnActivate;
     public static event Action OnPause;
+    public static event Action OnCameraStarted;
+    public static event Action OnCameraPerformed;
+
+    public static event Action OnInmune;
+    public static event Action OnWinCheat; 
+    public static event Action OnloseCheat;
 
     private void OnEnable()
     {
@@ -34,8 +47,23 @@ public class InputManager : MonoBehaviour
         activate.action.canceled += ActivateItem;
 
         pause.action.Enable();
-        activate.action.canceled += Pause;
+        pause.action.canceled += Pause;
 
+        camaraStarted.action.Enable();
+        camaraStarted.action.started += CamaraStarted;
+
+        camaraPerformed.action.Enable();
+        camaraPerformed.action.performed += CamaraPerformed;
+        camaraPerformed.action.canceled += CamaraPerformed;
+
+        inmuneCheat.action.Enable();
+        inmuneCheat.action.canceled += Inmune;
+
+        winCheat.action.Enable();
+        winCheat.action.canceled += Win;
+
+        loseCheat.action.Enable();
+        loseCheat.action.canceled += Lose;
 
     }
 
@@ -56,7 +84,23 @@ public class InputManager : MonoBehaviour
         activate.action.canceled -= ActivateItem;
 
         pause.action.Disable();
-        activate.action.canceled -= Pause;
+        pause.action.canceled -= Pause;
+
+        camaraStarted.action.Disable();
+        camaraStarted.action.started += CamaraStarted;
+
+        camaraPerformed.action.Disable();
+        camaraPerformed.action.performed -= CamaraPerformed;
+        camaraPerformed.action.canceled -= CamaraPerformed;
+
+        inmuneCheat.action.Disable();
+        inmuneCheat.action.canceled -= Inmune;
+
+        winCheat.action.Disable();
+        winCheat.action.canceled -= Win;
+
+        loseCheat.action.Disable();
+        loseCheat.action.canceled -= Lose;
     }
 
 
@@ -85,11 +129,35 @@ public class InputManager : MonoBehaviour
     private void Pause(InputAction.CallbackContext obj)
     {
         OnPause?.Invoke();
-    }
-    public void OnLook(InputValue inputValue)
-    {
+        Debug.Log("Pause");
 
-        var cameraInput = inputValue.Get<Vector2>();
-        //MoveCamera(cameraInput);
+    }
+
+    private void CamaraStarted(InputAction.CallbackContext obj)
+    {
+        OnCameraStarted?.Invoke();
+        Debug.Log("UNO click");
+
+    }
+    private void CamaraPerformed(InputAction.CallbackContext obj)
+    {
+        Debug.Log("DOS click");
+
+        OnCameraPerformed?.Invoke();
+    }
+
+    private void Inmune(InputAction.CallbackContext obj)
+    {
+        OnInmune?.Invoke();
+    }
+
+    private void Win(InputAction.CallbackContext obj)
+    {
+        OnWinCheat?.Invoke();
+    }
+
+    private void Lose(InputAction.CallbackContext obj)
+    {
+        OnloseCheat?.Invoke();
     }
 }

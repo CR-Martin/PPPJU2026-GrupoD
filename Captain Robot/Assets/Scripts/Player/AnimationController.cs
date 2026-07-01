@@ -22,6 +22,9 @@ public class AnimationController : MonoBehaviour
         PlayerController.OnPickUp += ItemPickUpI;
         PlayerController.OnDropAction += DropUpItem;
         PlayerController.OnDropAction += DropUpItem;
+
+        PlayerHealth.OnStarDamage -= StarDamage;
+        PlayerHealth.OnEndDamage -= StopDamage;
     }
     void Awake()
     {
@@ -30,7 +33,6 @@ public class AnimationController : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         SetRunAnimation();
@@ -45,22 +47,15 @@ public class AnimationController : MonoBehaviour
 
     private void ItemPickUpI()
     {
-        //float currentLayerWeight = animator.GetLayerWeight(1);
-        //float targetLayerWeight = 0.5f;
-        //float newLayerWeight;
+      
 
         animator.SetBool("Holding", true);
-        //newLayerWeight = Mathf.MoveTowards(currentLayerWeight, targetLayerWeight, Time.deltaTime * 5);
-
-        //animator.SetLayerWeight(1,0.5f);
+        
     }
 
     private void DropUpItem()
     {
-        //float currentLayerWeight = animator.GetLayerWeight(1);
-        //float targetLayerWeight = 0;
-
-        //float newLayerWeight = Mathf.MoveTowards(currentLayerWeight, targetLayerWeight, Time.deltaTime * 5);
+       
         animator.SetBool("Holding", false);
 
     }

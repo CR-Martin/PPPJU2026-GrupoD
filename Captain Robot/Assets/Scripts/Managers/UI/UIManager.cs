@@ -8,28 +8,40 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject winMenu;
     [SerializeField] GameObject gameOverMenu;
 
+    [SerializeField] Slider lifeUI;
+
     private void OnEnable()
     {
         WinPoint.OnWinCollition += WinGame;
         PlayerHealth.OnGameOver += GameOver;
+        InputManager.OnPause += Pause;
+
+        InputManager.OnWinCheat += WinGame;
+        InputManager.OnloseCheat += GameOver;
+
+        PlayerHealth.OnLifeChange += UpdateHealthBar;
+
     }
 
     private void OnDisable()
     {
         WinPoint.OnWinCollition -= WinGame;
         PlayerHealth.OnGameOver -= GameOver;
+        InputManager.OnPause -= Pause;
 
+        InputManager.OnWinCheat -= WinGame;
+        InputManager.OnloseCheat -= GameOver;
+
+        PlayerHealth.OnLifeChange -= UpdateHealthBar;
 
     }
-    void Update()
+    private void UpdateHealthBar(int currentHealth, int maxHealth)
     {
-        //TODO: MANDA ESTO A UN INPUT MANAGER
-        if (Input.GetKeyUp(KeyCode.Escape))
-        {
+        Debug.Log("here");
+        float temp1 = currentHealth;
+        float temp2 = maxHealth;
+        lifeUI.value = temp1 / temp2;
 
-            Pause();
-
-        }
     }
 
     private void Pause()

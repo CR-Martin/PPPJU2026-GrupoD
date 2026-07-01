@@ -4,16 +4,18 @@ using System;
 
 public class PlayerHealth : MonoBehaviour, IDamageable
 {
-    [SerializeField] private float maxLife;
+    [SerializeField] private int maxLife;
     private bool immune = false;
+    private bool cheatImmune = false;
 
-    private float tempLife;
+    private int tempLife;
     private int standarInmunity = 3;
     private int extendedInmunity = 10;
 
     public static Action OnGameOver;
     public static Action OnStarDamage;
     public static Action OnEndDamage;
+    public static Action<int,int> OnLifeChange;
 
     private void OnEnable()
     {
@@ -29,6 +31,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     void Start()
     {
         tempLife = maxLife;
+        OnLifeChange?.Invoke(tempLife, maxLife);
     }
 
     void Update()
@@ -41,9 +44,10 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     public void TakeDamage()
     {
-        if (immune == false)
+        if (immune == false && cheatImmune == false)
         {
             tempLife--;
+            OnLifeChange?.Invoke(tempLife, maxLife);
             StartCoroutine(immunity(standarInmunity));
         }
     }
@@ -60,5 +64,10 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         yield return new WaitForSeconds(time);
         OnEndDamage?.Invoke();
         immune = false;
+    }
+
+    private void CheatInmune()
+    {
+        cheatImmune = !cheatImmune;
     }
 }
