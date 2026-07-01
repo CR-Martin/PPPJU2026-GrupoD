@@ -12,6 +12,8 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     private int extendedInmunity = 10;
 
     public static Action OnGameOver;
+    public static Action OnStarDamage;
+    public static Action OnEndDamage;
 
     private void OnEnable()
     {
@@ -54,7 +56,9 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     IEnumerator immunity(int time)
     {
         immune = true;
+        OnStarDamage?.Invoke();
         yield return new WaitForSeconds(time);
+        OnEndDamage?.Invoke();
         immune = false;
     }
 }

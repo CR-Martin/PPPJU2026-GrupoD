@@ -12,8 +12,18 @@ public class AnimationController : MonoBehaviour
         PlayerController.OnDropAction += DropUpItem;
         PlayerController.OnDropAction += DropUpItem;
 
+        PlayerHealth.OnStarDamage += StarDamage;
+        PlayerHealth.OnEndDamage += StopDamage;
+
     }
-void Awake()
+
+    private void OnDisable()
+    {
+        PlayerController.OnPickUp += ItemPickUpI;
+        PlayerController.OnDropAction += DropUpItem;
+        PlayerController.OnDropAction += DropUpItem;
+    }
+    void Awake()
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
@@ -35,21 +45,36 @@ void Awake()
 
     private void ItemPickUpI()
     {
-        float currentLayerWeight = animator.GetLayerWeight(1);
-        float targetLayerWeight = 0.5f;
-        float newLayerWeight;
+        //float currentLayerWeight = animator.GetLayerWeight(1);
+        //float targetLayerWeight = 0.5f;
+        //float newLayerWeight;
 
-        newLayerWeight = Mathf.MoveTowards(currentLayerWeight, targetLayerWeight, Time.deltaTime * 5);
+        animator.SetBool("Holding", true);
+        //newLayerWeight = Mathf.MoveTowards(currentLayerWeight, targetLayerWeight, Time.deltaTime * 5);
 
-        animator.SetLayerWeight(1,0.5f);
+        //animator.SetLayerWeight(1,0.5f);
     }
 
     private void DropUpItem()
     {
-        float currentLayerWeight = animator.GetLayerWeight(1);
-        float targetLayerWeight = 0;
+        //float currentLayerWeight = animator.GetLayerWeight(1);
+        //float targetLayerWeight = 0;
 
-        float newLayerWeight = Mathf.MoveTowards(currentLayerWeight, targetLayerWeight, Time.deltaTime * 5);
-        animator.SetLayerWeight(1, 0);
+        //float newLayerWeight = Mathf.MoveTowards(currentLayerWeight, targetLayerWeight, Time.deltaTime * 5);
+        animator.SetBool("Holding", false);
+
     }
+
+    private void StarDamage()
+    {
+        animator.SetBool("Damage", true);
+
+    }
+
+    private void StopDamage()
+    {
+        animator.SetBool("Damage", false);
+
+    }
+
 }
