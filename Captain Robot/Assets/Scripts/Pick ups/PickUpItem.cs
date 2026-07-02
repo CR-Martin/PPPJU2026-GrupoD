@@ -3,9 +3,8 @@ using UnityEngine;
 
 public class PickUpItem : MonoBehaviour
 {
-    //[SerializeField] InputManager playerController;
     public static event Action<Item> OnCollision;
-
+    private Iinteractable Iinteractable;
     RaycastHit hit;
 
     private float pickUpRange = 1f;
@@ -30,6 +29,14 @@ public class PickUpItem : MonoBehaviour
                 Debug.Log("hit");
 
                 OnCollision?.Invoke(item);
+
+            }
+
+            if (hit.transform.gameObject.TryGetComponent(out Iinteractable interactable))
+            {
+                Debug.Log("hit interact");
+
+                interactable.Interact();
 
             }
         }

@@ -11,15 +11,12 @@ public class Button : MonoBehaviour
         {
             Debug.Log("Rock");
 
-            interact.SetActive(false);
+            if (interact.TryGetComponent<Iinteractable>(out Iinteractable interactable))
+            {
+                interactable.Interact();
+            }
         }
     }
 
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.tag == "Rock")
-        {
-            interact.SetActive(true);
-        }
-    }
+   
 }

@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
 using Unity.VisualScripting;
+using UnityEditor.Timeline.Actions;
+using UnityEditor.Rendering.LookDev;
 
 public class InputManager : MonoBehaviour
 {
@@ -51,10 +53,8 @@ public class InputManager : MonoBehaviour
 
         camaraStarted.action.Enable();
         camaraStarted.action.started += CamaraStarted;
+        camaraStarted.action.performed += ctr => Debug.Log($"{camaraStarted.action} performed");
 
-        camaraPerformed.action.Enable();
-        camaraPerformed.action.performed += CamaraPerformed;
-        camaraPerformed.action.canceled += CamaraPerformed;
 
         inmuneCheat.action.Enable();
         inmuneCheat.action.canceled += Inmune;
@@ -87,11 +87,9 @@ public class InputManager : MonoBehaviour
         pause.action.canceled -= Pause;
 
         camaraStarted.action.Disable();
-        camaraStarted.action.started += CamaraStarted;
+        camaraStarted.action.started -= CamaraStarted;
+        camaraPerformed.action.canceled -= CamaraStarted;
 
-        camaraPerformed.action.Disable();
-        camaraPerformed.action.performed -= CamaraPerformed;
-        camaraPerformed.action.canceled -= CamaraPerformed;
 
         inmuneCheat.action.Disable();
         inmuneCheat.action.canceled -= Inmune;
@@ -102,12 +100,17 @@ public class InputManager : MonoBehaviour
         loseCheat.action.Disable();
         loseCheat.action.canceled -= Lose;
     }
-
-
-
+    private void Update()
+    {
+        if (camaraStarted.action.IsPressed())
+        {
+            OnCameraPerformed?.Invoke();
+        }
+    }
     private void MovePlayer(InputAction.CallbackContext obj)
     {
         var movementInput = obj.ReadValue<Vector2>();
+
         OnPlayerMove?.Invoke(movementInput);
     }
 
@@ -129,21 +132,13 @@ public class InputManager : MonoBehaviour
     private void Pause(InputAction.CallbackContext obj)
     {
         OnPause?.Invoke();
-        Debug.Log("Pause");
 
     }
 
     private void CamaraStarted(InputAction.CallbackContext obj)
     {
         OnCameraStarted?.Invoke();
-        Debug.Log("UNO click");
 
-    }
-    private void CamaraPerformed(InputAction.CallbackContext obj)
-    {
-        Debug.Log("DOS click");
-
-        OnCameraPerformed?.Invoke();
     }
 
     private void Inmune(InputAction.CallbackContext obj)

@@ -70,13 +70,22 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Mouse",
+                    "name": "Mouse click",
                     "type": "Button",
                     "id": "5e685453-4615-4c17-b2b0-1f8884d2209c",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Mouse hold",
+                    "type": "Value",
+                    "id": "160b1bac-0217-48c1-876e-cd52a652647b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Win",
@@ -431,7 +440,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Mouse",
+                    "action": "Mouse click",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -476,6 +485,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Fly",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d92c9cdf-1478-4f3a-9cef-ebd78c7267f1",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Mouse hold",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

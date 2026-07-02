@@ -109,6 +109,8 @@ GameObject:
   - component: {fileID: 4762064240762007169}
   - component: {fileID: 8295790603830685150}
   - component: {fileID: 1782923216027570951}
+  - component: {fileID: 5898970568061384226}
+  - component: {fileID: 8940122850022534876}
   - component: {fileID: 2889621065361920068}
   - component: {fileID: 5233782966803267390}
   - component: {fileID: 1028291742032794351}
@@ -178,6 +180,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   handPosition: {fileID: 4327507097518841860}
+--- !u!114 &5898970568061384226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6256314387245833018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4af5f84b6756ee7468ff06d20d1c69b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  maxLife: 2
+--- !u!114 &8940122850022534876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6256314387245833018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6fa0eb15a802df4093dbfc6968d84a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerGravity
+  rb: {fileID: 0}
+  maxTime: 3
+  visual: {fileID: 0}
 --- !u!114 &2889621065361920068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,6 +235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerGravity
   rb: {fileID: 0}
   maxTime: 3
+  visual: {fileID: 0}
 --- !u!136 &1028291742032794351
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -309,7 +340,7 @@ MonoBehaviour:
   activate: {fileID: -9037057194359375782, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   pause: {fileID: -7205411166708719325, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   camaraStarted: {fileID: 3462608426237626141, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  camaraPerformed: {fileID: 3462608426237626141, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  camaraPerformed: {fileID: -5414483360053353524, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   inmuneCheat: {fileID: 432827426554852881, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   flyCheat: {fileID: 9151115637217119778, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   winCheat: {fileID: 7202743954409743506, guid: 052faaac586de48259a63d0c4782560b, type: 3}

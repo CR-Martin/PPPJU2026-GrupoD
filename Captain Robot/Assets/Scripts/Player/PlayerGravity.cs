@@ -6,6 +6,8 @@ public class PlayerGravity : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private int maxTime;
 
+    [SerializeField] private GameObject visual;
+
     private void OnEnable()
     {
         Wings.OnFlying += TurnOffGravity;
@@ -32,8 +34,10 @@ public class PlayerGravity : MonoBehaviour
     {
         rb.useGravity = false;
         rb.constraints |= RigidbodyConstraints.FreezePositionY;
+        visual.SetActive(true);
         yield return new WaitForSeconds(maxTime);
         Debug.Log("Unfreze");
+        visual.SetActive(false);
         rb.constraints &= ~RigidbodyConstraints.FreezePositionY;
         rb.useGravity = true;
 
