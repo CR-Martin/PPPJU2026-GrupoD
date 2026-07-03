@@ -1,23 +1,23 @@
 using UnityEngine;
 
-public class BombSpawner : ItemSpawner
+public class InmuneSpawner : ItemSpawner
 {
     private void OnEnable()
     {
-        Bombs.OnExplosion += SpawnBomb;
+        Inmune.OnInmunity += SpawnInmune;
     }
 
     private void OnDisable()
     {
-        Bombs.OnExplosion -= SpawnBomb;
+        Inmune.OnInmunity -= SpawnInmune;
     }
 
     private void Start()
     {
-        SpawnBomb();
+        SpawnInmune();
     }
 
-    void SpawnBomb()
+    void SpawnInmune()
     {
         Spawn();
     }

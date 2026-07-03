@@ -14,6 +14,8 @@ public class Button : MonoBehaviour
             if (interact.TryGetComponent<Iinteractable>(out Iinteractable interactable))
             {
                 interactable.Interact();
+                Destroy(collision.gameObject);
+
             }
         }
     }

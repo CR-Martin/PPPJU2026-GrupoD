@@ -9,8 +9,10 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     private bool cheatImmune = false;
 
     private int tempLife;
-    private int standarInmunity = 3;
-    private int extendedInmunity = 10;
+    [SerializeField] private int standarInmunity = 3;
+    [SerializeField] private int extendedInmunity = 10;
+
+    [SerializeField] private GameObject  visual;
 
     public static Action OnGameOver;
     public static Action OnStarDamage;
@@ -54,18 +56,28 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     private void LongInmunity()
     {
-        StartCoroutine(immunity(extendedInmunity));
+        StartCoroutine(Greaterimmunity(extendedInmunity));
 
     }
     IEnumerator immunity(int time)
     {
         immune = true;
+        visual.SetActive(true);
         OnStarDamage?.Invoke();
         yield return new WaitForSeconds(time);
+        visual.SetActive(false);
         OnEndDamage?.Invoke();
         immune = false;
     }
 
+    IEnumerator Greaterimmunity(int time)
+    {
+        immune = true;
+        visual.SetActive(true);
+        yield return new WaitForSeconds(time);
+        visual.SetActive(false);
+        immune = false;
+    }
     private void CheatInmune()
     {
         cheatImmune = !cheatImmune;

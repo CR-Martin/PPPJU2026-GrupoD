@@ -31,6 +31,15 @@ public class AnimationController : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
 
+        if (animator == null)
+        {
+            animator = GetComponentInChildren<Animator>();
+        }
+        if (rb == null)
+        {
+            rb = GetComponentInChildren<Rigidbody>();
+        }
+
     }
 
     void Update()

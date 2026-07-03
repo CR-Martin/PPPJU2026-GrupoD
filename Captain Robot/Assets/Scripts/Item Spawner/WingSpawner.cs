@@ -1,23 +1,23 @@
 using UnityEngine;
 
-public class BombSpawner : ItemSpawner
+public class WingSpawner : ItemSpawner
 {
     private void OnEnable()
     {
-        Bombs.OnExplosion += SpawnBomb;
+        Wings.OnFlying += SpawnWing;
     }
 
     private void OnDisable()
     {
-        Bombs.OnExplosion -= SpawnBomb;
+        Wings.OnFlying += SpawnWing;
     }
 
     private void Start()
     {
-        SpawnBomb();
+        SpawnWing();
     }
 
-    void SpawnBomb()
+    void SpawnWing()
     {
         Spawn();
     }

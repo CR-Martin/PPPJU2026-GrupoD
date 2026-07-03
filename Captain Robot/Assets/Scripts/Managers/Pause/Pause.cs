@@ -7,13 +7,13 @@ public class Pause : MonoBehaviour
 
     private void OnEnable()
     {
-        InputManager.OnPause += TryPause;
+        //InputManager.OnPause += TryPause;
 
     }
 
     private void OnDisable()
     {
-        InputManager.OnPause -= TryPause;
+        //InputManager.OnPause -= TryPause;
     }
 
     void TryPause()

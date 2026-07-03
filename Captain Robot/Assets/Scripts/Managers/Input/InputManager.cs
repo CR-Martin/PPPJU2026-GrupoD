@@ -29,6 +29,7 @@ public class InputManager : MonoBehaviour
     public static event Action OnCameraStarted;
     public static event Action OnCameraPerformed;
 
+    public static event Action OnFly;
     public static event Action OnInmune;
     public static event Action OnWinCheat; 
     public static event Action OnloseCheat;
@@ -55,6 +56,9 @@ public class InputManager : MonoBehaviour
         camaraStarted.action.started += CamaraStarted;
         camaraStarted.action.performed += ctr => Debug.Log($"{camaraStarted.action} performed");
 
+        flyCheat.action.Enable();
+        flyCheat.action.canceled += Fly;
+        flyCheat.action.canceled += ctr2 => Debug.Log($"{camaraStarted.action} performed");
 
         inmuneCheat.action.Enable();
         inmuneCheat.action.canceled += Inmune;
@@ -90,6 +94,8 @@ public class InputManager : MonoBehaviour
         camaraStarted.action.started -= CamaraStarted;
         camaraPerformed.action.canceled -= CamaraStarted;
 
+        flyCheat.action.Enable();
+        flyCheat.action.canceled -= Fly;
 
         inmuneCheat.action.Disable();
         inmuneCheat.action.canceled -= Inmune;
@@ -139,6 +145,11 @@ public class InputManager : MonoBehaviour
     {
         OnCameraStarted?.Invoke();
 
+    }
+
+    private void Fly(InputAction.CallbackContext ob)
+    {
+        OnFly?.Invoke();
     }
 
     private void Inmune(InputAction.CallbackContext obj)
