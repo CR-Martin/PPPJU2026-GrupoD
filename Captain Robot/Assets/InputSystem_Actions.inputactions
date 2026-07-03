@@ -79,15 +79,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Mouse hold",
-                    "type": "Value",
-                    "id": "160b1bac-0217-48c1-876e-cd52a652647b",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "Win",
                     "type": "Button",
                     "id": "80044c27-cef0-4f3a-98e5-be39dea7e77d",
@@ -115,7 +106,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Fly",
+                    "name": "Cheat",
                     "type": "Button",
                     "id": "52fbd61e-d2fb-45bd-a69b-24f3da0380fa",
                     "expectedControlType": "",
@@ -124,9 +115,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Win1",
+                    "name": "Presed",
                     "type": "Button",
-                    "id": "49561031-7886-4803-87a4-927c84e40048",
+                    "id": "fde27c60-f915-4d4a-b9f5-cd8599a3fb08",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -493,29 +484,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Fly",
+                    "action": "Cheat",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "bb4a9803-84ad-4880-ae6f-c91a6b978d42",
-                    "path": "<Keyboard>/f4",
+                    "id": "c71f27d5-ac0c-416f-982e-6de5e0f73b06",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Win1",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d92c9cdf-1478-4f3a-9cef-ebd78c7267f1",
-                    "path": "<Mouse>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Mouse hold",
+                    "action": "Presed",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

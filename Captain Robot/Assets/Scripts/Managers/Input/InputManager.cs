@@ -14,10 +14,9 @@ public class InputManager : MonoBehaviour
     [SerializeField] private InputActionReference activate;
     [SerializeField] private InputActionReference pause;
     [SerializeField] private InputActionReference camaraStarted;
-    [SerializeField] private InputActionReference camaraPerformed;
 
     [SerializeField] private InputActionReference inmuneCheat;
-    [SerializeField] private InputActionReference flyCheat;
+    [SerializeField] private InputActionReference cheat;
     [SerializeField] private InputActionReference winCheat;
     [SerializeField] private InputActionReference loseCheat;
 
@@ -29,8 +28,10 @@ public class InputManager : MonoBehaviour
     public static event Action OnCameraStarted;
     public static event Action OnCameraPerformed;
 
-    public static event Action OnFly;
-    public static event Action OnInmune;
+    public static event Action OnCheat;
+    
+
+    public static event Action OnGodmode;
     public static event Action OnWinCheat; 
     public static event Action OnloseCheat;
 
@@ -54,11 +55,9 @@ public class InputManager : MonoBehaviour
 
         camaraStarted.action.Enable();
         camaraStarted.action.started += CamaraStarted;
-        camaraStarted.action.performed += ctr => Debug.Log($"{camaraStarted.action} performed");
 
-        flyCheat.action.Enable();
-        flyCheat.action.canceled += Fly;
-        flyCheat.action.canceled += ctr2 => Debug.Log($"{camaraStarted.action} performed");
+        cheat.action.Enable();
+        cheat.action.canceled += Cheat;
 
         inmuneCheat.action.Enable();
         inmuneCheat.action.canceled += Inmune;
@@ -92,10 +91,10 @@ public class InputManager : MonoBehaviour
 
         camaraStarted.action.Disable();
         camaraStarted.action.started -= CamaraStarted;
-        camaraPerformed.action.canceled -= CamaraStarted;
 
-        flyCheat.action.Enable();
-        flyCheat.action.canceled -= Fly;
+
+        cheat.action.Enable();
+        cheat.action.canceled -= Cheat;
 
         inmuneCheat.action.Disable();
         inmuneCheat.action.canceled -= Inmune;
@@ -147,15 +146,14 @@ public class InputManager : MonoBehaviour
 
     }
 
-    private void Fly(InputAction.CallbackContext ob)
+    private void Cheat(InputAction.CallbackContext ob)
     {
-        Debug.Log("eeeeeeeeeeeee");
-        OnFly?.Invoke();
+        OnCheat?.Invoke();
     }
 
     private void Inmune(InputAction.CallbackContext obj)
     {
-        OnInmune?.Invoke();
+        OnGodmode?.Invoke();
     }
 
     private void Win(InputAction.CallbackContext obj)

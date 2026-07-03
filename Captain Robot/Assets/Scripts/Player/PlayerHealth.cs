@@ -22,11 +22,13 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     private void OnEnable()
     {
         Inmune.OnInmunity += LongInmunity;
+        InputManager.OnGodmode += CheatInmune;
     }
 
     private void OnDisable()
     {
         Inmune.OnInmunity -= LongInmunity;
+        InputManager.OnGodmode -= CheatInmune;
 
     }
 

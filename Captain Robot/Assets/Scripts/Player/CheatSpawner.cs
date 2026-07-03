@@ -5,27 +5,35 @@ using UnityEngine;
 public class CheatSpawner : MonoBehaviour
 {
     [SerializeField] GameObject flyPowerUp;
+    [SerializeField] GameObject inmunePowerUp;
+    [SerializeField] GameObject rockPickUp;
+    [SerializeField] GameObject bombPickUp;
 
     [SerializeField] Transform spawnPoint;
 
     private void OnEnable()
     {
-        InputManager.OnFly += Fly;
+        InputManager.OnCheat += Fly;
     }
 
     private void OnDisable()
     {
-        InputManager.OnFly -= Fly;
+        InputManager.OnCheat -= Fly;
 
     }
     private void Fly()
     {
         Spawn(flyPowerUp);
+        Spawn(inmunePowerUp);
+        Spawn(rockPickUp);
+        Spawn(bombPickUp);
+
     }
 
     private void Spawn(GameObject refe)
     {
-        Instantiate(refe, spawnPoint);
+        GameObject temp = Instantiate(refe, spawnPoint);
+        temp.transform.SetParent(null);
 
     }
 }

@@ -140,11 +140,11 @@ public class UIManager : MonoBehaviour
 
     public void ResumeGameplay()
     {
-        pauseMenu.SetActive(false);
         SetTimeToOne();
     }
     private void SetTimeToZero()
     {
+        pauseMenu.SetActive(false);
         Time.timeScale = 0f;
     }
 

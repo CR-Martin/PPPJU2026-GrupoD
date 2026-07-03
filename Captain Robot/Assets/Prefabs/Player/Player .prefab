@@ -315,9 +315,8 @@ MonoBehaviour:
   activate: {fileID: -9037057194359375782, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   pause: {fileID: -7205411166708719325, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   camaraStarted: {fileID: 3462608426237626141, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  camaraPerformed: {fileID: -5414483360053353524, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   inmuneCheat: {fileID: 432827426554852881, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  flyCheat: {fileID: 9151115637217119778, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  cheat: {fileID: 9151115637217119778, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   winCheat: {fileID: 7202743954409743506, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   loseCheat: {fileID: -2316665824282843422, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!114 &5299035398141240127
@@ -333,6 +332,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CheatSpawner
   flyPowerUp: {fileID: 3428028150550388717, guid: 43da906cfe01bf04bbe1336ff3ed8ac3, type: 3}
+  inmunePowerUp: {fileID: 4654663475784343405, guid: d63b35ecc232c8c428582675567a4a1d, type: 3}
+  rockPickUp: {fileID: 5504793588722476648, guid: e228b1e5a223a2a41b605ddf99b2a708, type: 3}
+  bombPickUp: {fileID: 361116698676449830, guid: ec6d9764f90e5d64f99a4dc2b5914412, type: 3}
   spawnPoint: {fileID: 4327507097518841860}
 --- !u!114 &4847673134428045403
 MonoBehaviour:
