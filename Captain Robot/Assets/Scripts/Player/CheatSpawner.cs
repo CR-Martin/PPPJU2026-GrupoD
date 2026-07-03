@@ -25,6 +25,7 @@ public class CheatSpawner : MonoBehaviour
 
     private void Spawn(GameObject refe)
     {
+        Instantiate(refe, spawnPoint);
 
     }
 }

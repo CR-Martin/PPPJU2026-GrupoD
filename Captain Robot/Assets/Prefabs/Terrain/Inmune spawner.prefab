@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8772874002743777943}
-  - component: {fileID: 1844537707164182072}
+  - component: {fileID: 3651259779313032094}
   m_Layer: 0
   m_Name: Inmune spawner
   m_TagString: Untagged
@@ -34,7 +34,7 @@ Transform:
   - {fileID: 8666022044674474509}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1844537707164182072
+--- !u!114 &3651259779313032094
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,9 +43,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1574459529661656873}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f046fa789c025b14aa2f0c48ad4e5519, type: 3}
+  m_Script: {fileID: 11500000, guid: bd9a81a115b1c094a86e8b38865ebbad, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WingSpawner
+  m_EditorClassIdentifier: Assembly-CSharp::InmuneSpawner
   item: {fileID: 4654663475784343405, guid: d63b35ecc232c8c428582675567a4a1d, type: 3}
   spawnPoint: {fileID: 8666022044674474509}
 --- !u!1 &7312838312742462498

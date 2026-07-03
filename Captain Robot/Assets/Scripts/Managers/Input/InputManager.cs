@@ -149,6 +149,7 @@ public class InputManager : MonoBehaviour
 
     private void Fly(InputAction.CallbackContext ob)
     {
+        Debug.Log("eeeeeeeeeeeee");
         OnFly?.Invoke();
     }
 
