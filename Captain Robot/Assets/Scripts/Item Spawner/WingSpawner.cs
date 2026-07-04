@@ -9,7 +9,7 @@ public class WingSpawner : ItemSpawner
 
     private void OnDisable()
     {
-        Wings.OnFlying += SpawnWing;
+        Wings.OnFlying -= SpawnWing;
     }
 
     private void Start()

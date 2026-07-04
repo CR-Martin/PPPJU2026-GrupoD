@@ -37,6 +37,8 @@ public class Bombs : Item
         RaycastHit[] hits = Physics.SphereCastAll(transform.position, 2f, -transform.up, 5f);
         IDamageable isHit;
 
+        //AudioManager.Instance.PlayEffect("Bomb");
+
         foreach (RaycastHit colliders in hits)
         {
             Debug.Log(colliders.transform.gameObject);

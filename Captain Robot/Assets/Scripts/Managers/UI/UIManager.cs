@@ -105,18 +105,24 @@ public class UIManager : MonoBehaviour
 
     private void GameOver()
     {
+        pauseMenu.SetActive(false);
+
         SetTimeToZero();
         gameOverMenu.SetActive(true);
 
     }
     private void WinGame()
     {
+        pauseMenu.SetActive(false);
+
         SetTimeToZero();
         winMenu.SetActive(true);
     }
 
     public void RelaodLevel()
     {
+        pauseMenu.SetActive(false);
+
         SetTimeToOne();
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);
@@ -140,11 +146,12 @@ public class UIManager : MonoBehaviour
 
     public void ResumeGameplay()
     {
+        pauseMenu.SetActive(false);
+
         SetTimeToOne();
     }
     private void SetTimeToZero()
     {
-        pauseMenu.SetActive(false);
         Time.timeScale = 0f;
     }
 

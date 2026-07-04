@@ -93,7 +93,7 @@ public class InputManager : MonoBehaviour
         camaraStarted.action.started -= CamaraStarted;
 
 
-        cheat.action.Enable();
+        cheat.action.Disable();
         cheat.action.canceled -= Cheat;
 
         inmuneCheat.action.Disable();
@@ -136,6 +136,7 @@ public class InputManager : MonoBehaviour
 
     private void Pause(InputAction.CallbackContext obj)
     {
+        Debug.Log("pause");
         OnPause?.Invoke();
 
     }

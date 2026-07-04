@@ -50,7 +50,23 @@ MonoBehaviour:
   musicSounds:
   - soundName: Main music
     clip: {fileID: 8300000, guid: 178718981158e6640aee6795c3175b1c, type: 3}
-  effectSounds: []
+  effectSounds:
+  - soundName: Bomb
+    clip: {fileID: 8300000, guid: e4827223d4b179c48b0c6125ea2f22dd, type: 3}
+  - soundName: Shield
+    clip: {fileID: 8300000, guid: 85ff0328068ed5946bbfbb58a20d9368, type: 3}
+  - soundName: Pick Up
+    clip: {fileID: 8300000, guid: 0d209878e5ddf1447b728f18b3f5251b, type: 3}
+  - soundName: Hurt
+    clip: {fileID: 8300000, guid: 82cf871136561e94abe80dcb27b39864, type: 3}
+  - soundName: Drop
+    clip: {fileID: 8300000, guid: a5b3a9f9ff24f0f4bbbf0e570cfe2aa8, type: 3}
+  - soundName: Win
+    clip: {fileID: 8300000, guid: e35cf1c7bfb0a4d45929a6cb9e005fd3, type: 3}
+  - soundName: Wood Breaking
+    clip: {fileID: 8300000, guid: 98403045087207c4b844d87b463fb05d, type: 3}
+  - soundName: Button
+    clip: {fileID: 8300000, guid: 61a8f6cc41c3f8e4d994a8f57bde3464, type: 3}
   uiSounds:
   - soundName: Click
     clip: {fileID: 8300000, guid: fd3b3a0a089ddd24c8a1876e2d3c6c60, type: 3}

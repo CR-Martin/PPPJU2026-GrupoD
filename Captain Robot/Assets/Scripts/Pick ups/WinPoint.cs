@@ -12,6 +12,8 @@ public class WinPoint : MonoBehaviour
     {
         if (collision.gameObject.tag == colliderTag)
         {
+            AudioManager.Instance.PlayEffect("Win");
+
             OnWinCollition?.Invoke();
         }
     }

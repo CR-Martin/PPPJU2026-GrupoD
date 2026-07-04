@@ -19,9 +19,9 @@ public class AnimationController : MonoBehaviour
 
     private void OnDisable()
     {
-        PlayerController.OnPickUp += ItemPickUpI;
-        PlayerController.OnDropAction += DropUpItem;
-        PlayerController.OnDropAction += DropUpItem;
+        PlayerController.OnPickUp -= ItemPickUpI;
+        PlayerController.OnDropAction -= DropUpItem;
+        PlayerController.OnDropAction -= DropUpItem;
 
         PlayerHealth.OnStarDamage -= StarDamage;
         PlayerHealth.OnEndDamage -= StopDamage;

@@ -11,6 +11,7 @@ public class Wings : Item
         KinematicState(false);
         rb.useGravity = true;
         OnFlying.Invoke();
+        AudioManager.Instance.PlayEffect("Fly");
         Destroy(gameObject);
     }
 

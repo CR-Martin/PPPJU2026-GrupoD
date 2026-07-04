@@ -65,6 +65,8 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     {
         immune = true;
         visual.SetActive(true);
+        AudioManager.Instance.PlayEffect("Hurt");
+
         OnStarDamage?.Invoke();
         yield return new WaitForSeconds(time);
         visual.SetActive(false);
@@ -76,6 +78,8 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     {
         immune = true;
         visual.SetActive(true);
+        AudioManager.Instance.PlayEffect("Shield");
+
         yield return new WaitForSeconds(time);
         visual.SetActive(false);
         immune = false;

@@ -13,6 +13,8 @@ public class Button : MonoBehaviour
 
             if (interact.TryGetComponent<Iinteractable>(out Iinteractable interactable))
             {
+                AudioManager.Instance.PlayEffect("Button");
+
                 interactable.Interact();
                 Destroy(collision.gameObject);
 

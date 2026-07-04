@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
     {
        
         Debug.Log("Hacemos pick up");
+        AudioManager.Instance.PlayEffect("Pick Up");
 
         currentItem = item;
         item.transform.SetParent(handPosition);
@@ -66,6 +67,7 @@ public class PlayerController : MonoBehaviour
 
         if (currentItem != null)
         {
+            AudioManager.Instance.PlayEffect("Drop");
 
             currentItem.DropItem();
             PlayerDropItem();
