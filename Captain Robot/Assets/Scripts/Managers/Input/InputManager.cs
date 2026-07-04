@@ -1,9 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
-using Unity.VisualScripting;
-using UnityEditor.Timeline.Actions;
-using UnityEditor.Rendering.LookDev;
+
 
 public class InputManager : MonoBehaviour
 {
