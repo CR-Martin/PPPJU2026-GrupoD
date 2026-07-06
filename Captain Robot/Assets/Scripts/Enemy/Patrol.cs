@@ -4,44 +4,52 @@ using System.Collections;
 
 public class Patrol : MonoBehaviour
 {
-    public Transform[] points;
-    private int destPoint = 0;
-    private NavMeshAgent agent;
+    [Header("Patrol Points")]
+    public Transform pointA;
+    public Transform pointB;
 
+    [Header("Settings")]
+    public float speed = 2f;
+    public float waitTime = 0.5f; 
+
+    private Transform target;
+    private bool waiting = false;
+    private float waitTimer = 0f;
 
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
-
-        // Disabling auto-braking allows for continuous movement
-        // between points (ie, the agent doesn't slow down as it
-        // approaches a destination point).
-        agent.autoBraking = false;
-
-        GotoNextPoint();
+        target = pointB;
     }
-
-
-    void GotoNextPoint()
-    {
-        // Returns if no points have been set up
-        if (points.Length == 0)
-            return;
-
-        // Set the agent to go to the currently selected destination.
-        agent.destination = points[destPoint].position;
-
-        // Choose the next point in the array as the destination,
-        // cycling to the start if necessary.
-        destPoint = (destPoint + 1) % points.Length;
-    }
-
 
     void Update()
     {
-        // Choose the next destination point when the agent gets
-        // close to the current one.
-        if (!agent.pathPending && agent.remainingDistance < 0.5f)
-            GotoNextPoint();
+        Debug.Log("uPDATE");
+        if (waiting)
+        {
+            Debug.Log("DONE");
+
+            waitTimer += Time.deltaTime;
+            if (waitTimer >= waitTime)
+            {
+                waiting = false;
+                waitTimer = 0f;
+                target = (target == pointA) ? pointB : pointA;
+            }
+            return;
+        }
+
+        transform.position = Vector3.MoveTowards(
+            transform.position,
+            target.position,
+            speed * Time.deltaTime
+        );
+
+        Vector3 direction = (target.position - transform.position);
+       
+
+        if (Vector3.Distance(transform.position, target.position) < 0.05f)
+        {
+            waiting = true;
+        }
     }
 }

@@ -7,6 +7,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     [SerializeField] private int maxLife;
     private bool immune = false;
     private bool cheatImmune = false;
+    bool dieOnce;
 
     private int tempLife;
     [SerializeField] private int standarInmunity = 3;
@@ -35,14 +36,17 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     void Start()
     {
         tempLife = maxLife;
+        dieOnce = false;
         OnLifeChange?.Invoke(tempLife, maxLife);
     }
 
     void Update()
     {
-        if (tempLife == 0)
+        if (tempLife == 0 && dieOnce == false)
         {
+            dieOnce = true;
             OnGameOver?.Invoke();
+
         }
     }
 
