@@ -7,8 +7,30 @@ public class Elevator : MonoBehaviour, Iinteractable
     [SerializeField] private float elevatedPosition;
     [SerializeField] private float duration;
 
+    private bool ifTimeStop;
+
+    private void OnEnable()
+    {
+        TimeStop.OnTimeStop += StopTime;
+
+    }
+
+    private void OnDisable()
+    {
+        TimeStop.OnTimeStop -= StopTime;
+
+    }
+
+    private void StopTime(float time)
+    {
+        StartCoroutine(StopForATime(time));
+
+
+    }
+
     private void Start()
     {
+        ifTimeStop = false;
         initialPosition = gameObject.transform.position.y;
         elevatedPosition += initialPosition; 
     }
@@ -40,4 +62,15 @@ public class Elevator : MonoBehaviour, Iinteractable
         pos.y = toY;
         transform.position = pos;
     }
+
+    IEnumerator StopForATime(float time)
+    {
+
+        ifTimeStop = !ifTimeStop;
+
+        yield return new WaitForSeconds(time);
+
+        ifTimeStop = !ifTimeStop;
+    }
+
 }

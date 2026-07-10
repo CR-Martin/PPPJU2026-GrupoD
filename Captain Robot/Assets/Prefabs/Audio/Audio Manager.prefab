@@ -67,6 +67,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 98403045087207c4b844d87b463fb05d, type: 3}
   - soundName: Button
     clip: {fileID: 8300000, guid: 61a8f6cc41c3f8e4d994a8f57bde3464, type: 3}
+  - soundName: Fly
+    clip: {fileID: 8300000, guid: 4877c16e41ad272469a4d15802370ec4, type: 3}
   uiSounds:
   - soundName: Click
     clip: {fileID: 8300000, guid: fd3b3a0a089ddd24c8a1876e2d3c6c60, type: 3}

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections;
 
 public class UIManager : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Slider musicVolume;
     [SerializeField] private Slider sfxVolume;
     [SerializeField] private Slider uiVolume;
+    [SerializeField] Slider lifeUI;
+
 
     [Header("Player prefs")]
     [SerializeField] private string musicVolumePref = "musicVolume";
@@ -20,7 +23,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject winMenu;
     [SerializeField] GameObject gameOverMenu;
 
-    [SerializeField] Slider lifeUI;
 
     private void OnEnable()
     {
@@ -32,6 +34,7 @@ public class UIManager : MonoBehaviour
         InputManager.OnloseCheat += GameOver;
 
         PlayerHealth.OnLifeChange += UpdateHealthBar;
+
 
     }
     private void Awake()
@@ -58,12 +61,13 @@ public class UIManager : MonoBehaviour
         sfxVolume.onValueChanged.AddListener(SetSFXVolume);
         uiVolume.onValueChanged.AddListener(SetUIVolume);
 
-       
 
     }
 
     private void Start()
     {
+       // Cursor.visible = false;
+
         AudioManager.Instance.PlayMusic("Main music");
         AudioManager.Instance.MusicVolume(PlayerPrefs.GetFloat(musicVolumePref));
         AudioManager.Instance.SfxVolume(PlayerPrefs.GetFloat(effectVolumePref));
@@ -80,10 +84,11 @@ public class UIManager : MonoBehaviour
 
         PlayerHealth.OnLifeChange -= UpdateHealthBar;
 
+
+
     }
     private void UpdateHealthBar(int currentHealth, int maxHealth)
     {
-        Debug.Log("here");
         float temp1 = currentHealth;
         float temp2 = maxHealth;
         lifeUI.value = temp1 / temp2;
@@ -103,6 +108,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
+   
     private void GameOver()
     {
         pauseMenu.SetActive(false);
@@ -152,11 +158,15 @@ public class UIManager : MonoBehaviour
     }
     private void SetTimeToZero()
     {
+        Cursor.visible = true;
+
         Time.timeScale = 0f;
     }
 
     private void SetTimeToOne()
     {
+        Cursor.visible = false;
+
         Time.timeScale = 1f;
     }
 

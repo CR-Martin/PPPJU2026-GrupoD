@@ -16,17 +16,44 @@ public class Patrol : MonoBehaviour
     private bool waiting = false;
     private float waitTimer = 0f;
 
+    private bool ifTimeStop;
+
+    private void OnEnable()
+    {
+        TimeStop.OnTimeStop += StopTime;
+
+    }
+
+    private void OnDisable()
+    {
+        TimeStop.OnTimeStop -= StopTime;
+
+    }
+
+    private void StopTime(float time)
+    {
+        StartCoroutine(StopForATime(time));
+
+
+    }
+
     void Start()
     {
         target = pointB;
+        ifTimeStop = false;
     }
 
     void Update()
     {
-        Debug.Log("uPDATE");
+        if (ifTimeStop == true)
+        {
+
+            return;
+        }
+     
+
         if (waiting)
         {
-            Debug.Log("DONE");
 
             waitTimer += Time.deltaTime;
             if (waitTimer >= waitTime)
@@ -51,5 +78,15 @@ public class Patrol : MonoBehaviour
         {
             waiting = true;
         }
+    }
+
+    IEnumerator StopForATime(float time)
+    {
+
+        ifTimeStop = !ifTimeStop;
+
+        yield return new WaitForSeconds(time);
+
+        ifTimeStop = !ifTimeStop;
     }
 }

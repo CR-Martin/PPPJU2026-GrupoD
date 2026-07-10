@@ -41,6 +41,8 @@ public class MainMenuManager : MonoBehaviour
 
     private void Start()
     {
+        Cursor.visible = true;
+
         AudioManager.Instance.PlayMusic("Main music");
         AudioManager.Instance.MusicVolume(PlayerPrefs.GetFloat(musicVolumePref));
         AudioManager.Instance.SfxVolume(PlayerPrefs.GetFloat(effectVolumePref));

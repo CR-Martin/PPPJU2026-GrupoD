@@ -44,30 +44,39 @@ public class CameraRotation: MonoBehaviour
 
     private void CameraStarted()
     {
-        previousPosition = cam.ScreenToViewportPoint(Input.mousePosition);
-        Debug.Log("First click");
+        if (Time.timeScale == 1)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+
+            previousPosition = cam.ScreenToViewportPoint(Input.mousePosition);
+        }
     }
 
     private void CameraPerformed()
     {
-        Vector3 newPosition = cam.ScreenToViewportPoint(Input.mousePosition);
-        Vector3 direction = previousPosition - newPosition;
+        if (Time.timeScale == 1)
+        {
+            Cursor.lockState = CursorLockMode.Confined;
 
-        float rotationY = -direction.x * mouseSensitivity;
-        float rotationX = direction.y * mouseSensitivity;
+            Vector3 newPosition = cam.ScreenToViewportPoint(Input.mousePosition);
+            Vector3 direction = previousPosition - newPosition;
 
-        cam.transform.Rotate(Vector3.right, rotationX); // Rotación vertical (solo cámara)
+            float rotationY = -direction.x * mouseSensitivity;
+            float rotationX = direction.y * mouseSensitivity;
 
-        cam.transform.Rotate(Vector3.up, rotationY, Space.World); // Rotación horizontal (solo cámara)
+            cam.transform.Rotate(Vector3.right, rotationX);
 
-        previousPosition = newPosition;
+            cam.transform.Rotate(Vector3.up, rotationY, Space.World);
+
+            previousPosition = newPosition;
+        }
+      
 
     }
 
 
     void AlignPlayerWithCamera()
     {
-        // Dirección hacia donde mira la cámara
         Vector3 forward = cam.transform.forward;
         forward.y = 0;
 
