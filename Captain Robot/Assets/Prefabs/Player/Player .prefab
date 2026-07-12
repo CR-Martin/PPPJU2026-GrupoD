@@ -181,6 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   handPosition: {fileID: 4327507097518841860}
+  pickUpItem: {fileID: 7627078476243904228}
 --- !u!114 &5898970568061384226
 MonoBehaviour:
   m_ObjectHideFlags: 0

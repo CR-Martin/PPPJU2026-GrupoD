@@ -1,12 +1,28 @@
 using UnityEngine;
 
-public abstract class ItemSpawner : MonoBehaviour
+public class ItemSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject item;
     [SerializeField] private Transform spawnPoint;
 
-    public void Spawn()
+    [SerializeField] private GameObject currentSpawnedItem;
+
+
+    private void Update()
     {
-        Instantiate(item,spawnPoint);
+        if (currentSpawnedItem != null) return;
+
+        SpawnInmune();
+    }
+
+    void SpawnInmune()
+    {
+
+        currentSpawnedItem = Spawn();
+    }
+
+    public GameObject Spawn()
+    {
+        return Instantiate(item,spawnPoint);
     }
 }

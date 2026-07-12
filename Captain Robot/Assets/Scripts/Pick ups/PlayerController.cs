@@ -5,6 +5,7 @@ using UnityEngine.UIElements;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] Transform handPosition;
+    [SerializeField] PickUpItem pickUpItem;
 
     Item currentItem;
 
@@ -59,6 +60,10 @@ public class PlayerController : MonoBehaviour
             PlayerDropItem();
             OnDropAction?.Invoke();
 
+        }
+        else
+        {
+            pickUpItem.DetectPickUp();
         }
     }
     public void DropItem()

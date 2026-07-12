@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4015614869908258910}
-  - component: {fileID: 5710902648898613100}
+  - component: {fileID: 5011145679887564981}
   m_Layer: 0
   m_Name: Wing spawner
   m_TagString: Untagged
@@ -34,7 +34,7 @@ Transform:
   - {fileID: 2739086704362569277}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5710902648898613100
+--- !u!114 &5011145679887564981
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,11 +43,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2564795886068886922}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f046fa789c025b14aa2f0c48ad4e5519, type: 3}
+  m_Script: {fileID: 11500000, guid: 68a58686ba0f09744a6013436a414996, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WingSpawner
+  m_EditorClassIdentifier: Assembly-CSharp::ItemSpawner
   item: {fileID: 3428028150550388717, guid: 43da906cfe01bf04bbe1336ff3ed8ac3, type: 3}
   spawnPoint: {fileID: 2739086704362569277}
+  currentSpawnedItem: {fileID: 0}
 --- !u!1 &9091848790264412370
 GameObject:
   m_ObjectHideFlags: 0

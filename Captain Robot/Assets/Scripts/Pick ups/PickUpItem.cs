@@ -9,19 +9,7 @@ public class PickUpItem : MonoBehaviour
 
     private float pickUpRange = 1f;
 
-    private void OnEnable()
-    {
-        //InputManager.OnSpace += DetectPickUp;
-        InputManager.OnActivate += DetectPickUp;
-    }
-
-    private void OnDisable()
-    {
-        //InputManager.OnSpace -= DetectPickUp;
-        InputManager.OnActivate -= DetectPickUp;
-    }
-
-    void DetectPickUp()
+    public void DetectPickUp()
     {
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, pickUpRange))
         {

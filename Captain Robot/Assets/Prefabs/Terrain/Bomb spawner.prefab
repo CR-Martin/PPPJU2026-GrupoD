@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3557601955275842314}
-  - component: {fileID: 7476442041484408299}
+  - component: {fileID: 9063335447238136491}
   m_Layer: 0
   m_Name: Bomb spawner
   m_TagString: Untagged
@@ -65,7 +65,7 @@ Transform:
   - {fileID: 3299842531317004338}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7476442041484408299
+--- !u!114 &9063335447238136491
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -74,11 +74,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 9187494050762609843}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 297b50ce1385c1b40a3e4fb7a4703727, type: 3}
+  m_Script: {fileID: 11500000, guid: 68a58686ba0f09744a6013436a414996, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BombSpawner
+  m_EditorClassIdentifier: Assembly-CSharp::ItemSpawner
   item: {fileID: 361116698676449830, guid: ec6d9764f90e5d64f99a4dc2b5914412, type: 3}
   spawnPoint: {fileID: 3299842531317004338}
+  currentSpawnedItem: {fileID: 0}
 --- !u!1001 &79483012982719541
 PrefabInstance:
   m_ObjectHideFlags: 0
