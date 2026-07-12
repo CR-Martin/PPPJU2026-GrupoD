@@ -42,6 +42,7 @@ public class MainMenuManager : MonoBehaviour
     private void Start()
     {
         Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
 
         AudioManager.Instance.PlayMusic("Main music");
         AudioManager.Instance.MusicVolume(PlayerPrefs.GetFloat(musicVolumePref));

@@ -40,7 +40,6 @@ public class PlayerController : MonoBehaviour
     void PlayerPicker_OnPickUp(Item item)
     {
        
-        Debug.Log("Hacemos pick up");
         AudioManager.Instance.PlayEffect("Pick Up");
 
         currentItem = item;

@@ -21,11 +21,15 @@ public class CameraRotation: MonoBehaviour
     {
         InputManager.OnCameraStarted += CameraStarted;
         InputManager.OnCameraPerformed += CameraPerformed;
+        InputManager.OnCameraCanceled += CameraCancelled;
+
     }
     private void OnDisable()
     {
         InputManager.OnCameraStarted -= CameraStarted;
         InputManager.OnCameraPerformed -= CameraPerformed;
+        InputManager.OnCameraCanceled -= CameraCancelled;
+
     }
     void Update()
     {
@@ -74,6 +78,13 @@ public class CameraRotation: MonoBehaviour
 
     }
 
+    private void CameraCancelled()
+    {
+        if (Time.timeScale == 1)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+    }
 
     void AlignPlayerWithCamera()
     {

@@ -36,7 +36,6 @@ public class PlayerGravity : MonoBehaviour
         rb.constraints |= RigidbodyConstraints.FreezePositionY;
         visual.SetActive(true);
         yield return new WaitForSeconds(maxTime);
-        Debug.Log("Unfreze");
         visual.SetActive(false);
         rb.constraints &= ~RigidbodyConstraints.FreezePositionY;
         rb.useGravity = true;

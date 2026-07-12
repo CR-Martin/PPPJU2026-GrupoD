@@ -25,6 +25,7 @@ public class InputManager : MonoBehaviour
     public static event Action OnPause;
     public static event Action OnCameraStarted;
     public static event Action OnCameraPerformed;
+    public static event Action OnCameraCanceled;
 
     public static event Action OnCheat;
     
@@ -53,6 +54,7 @@ public class InputManager : MonoBehaviour
 
         camaraStarted.action.Enable();
         camaraStarted.action.started += CamaraStarted;
+        camaraStarted.action.canceled += CamaraCanceled;
 
         cheat.action.Enable();
         cheat.action.canceled += Cheat;
@@ -89,6 +91,7 @@ public class InputManager : MonoBehaviour
 
         camaraStarted.action.Disable();
         camaraStarted.action.started -= CamaraStarted;
+        camaraStarted.action.canceled -= CamaraCanceled;
 
 
         cheat.action.Disable();
@@ -142,6 +145,12 @@ public class InputManager : MonoBehaviour
     private void CamaraStarted(InputAction.CallbackContext obj)
     {
         OnCameraStarted?.Invoke();
+
+    }
+
+    private void CamaraCanceled(InputAction.CallbackContext obj)
+    {
+        OnCameraCanceled?.Invoke();
 
     }
 

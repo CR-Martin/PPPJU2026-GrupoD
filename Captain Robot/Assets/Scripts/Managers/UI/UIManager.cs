@@ -66,7 +66,8 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-       // Cursor.visible = false;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
 
         AudioManager.Instance.PlayMusic("Main music");
         AudioManager.Instance.MusicVolume(PlayerPrefs.GetFloat(musicVolumePref));
@@ -159,6 +160,7 @@ public class UIManager : MonoBehaviour
     private void SetTimeToZero()
     {
         Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
 
         Time.timeScale = 0f;
     }

@@ -11,22 +11,22 @@ public class PickUpItem : MonoBehaviour
 
     private void OnEnable()
     {
-        InputManager.OnSpace += DetectPickUp;
+        //InputManager.OnSpace += DetectPickUp;
+        InputManager.OnActivate += DetectPickUp;
     }
 
     private void OnDisable()
     {
-        InputManager.OnSpace -= DetectPickUp;
+        //InputManager.OnSpace -= DetectPickUp;
+        InputManager.OnActivate -= DetectPickUp;
     }
 
     void DetectPickUp()
     {
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, pickUpRange))
         {
-            Debug.Log("ray");
             if (hit.transform.gameObject.TryGetComponent(out Item item))
             {
-                Debug.Log("hit");
 
                 OnCollision?.Invoke(item);
 
@@ -34,7 +34,6 @@ public class PickUpItem : MonoBehaviour
 
             if (hit.transform.gameObject.TryGetComponent(out Iinteractable interactable))
             {
-                Debug.Log("hit interact");
 
                 interactable.Interact();
 
