@@ -7,7 +7,7 @@ public class Bombs : Item
 {
     [SerializeField] private ParticleSystem fireEffect;
     [SerializeField] private ParticleSystem explosionEffect;
-    [SerializeField] private float effectLifetime = 2f; // used only if the effect doesn't self-destroy
+    [SerializeField] private float effectLifetime = 2f; 
 
     private float forceThrow = 100;
     private int maxTimer = 3;
@@ -50,7 +50,7 @@ public class Bombs : Item
         {
             ParticleSystem effect = Instantiate(explosionEffect, transform.position, Quaternion.identity);
             effect.Play();
-            Destroy(effect.gameObject, effectLifetime); // safety net if "Stop Action: Destroy" isn't set
+            Destroy(effect.gameObject, effectLifetime);
         }
 
         foreach (RaycastHit colliders in hits)

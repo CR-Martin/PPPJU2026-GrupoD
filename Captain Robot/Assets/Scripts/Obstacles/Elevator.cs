@@ -49,6 +49,9 @@ public class Elevator : MonoBehaviour, Iinteractable
 
         while (elapsed < time)
         {
+            while (ifTimeStop)
+                yield return null;
+
             elapsed += Time.deltaTime;
             float t = Mathf.Clamp01(elapsed / time);
             t = Mathf.SmoothStep(0f, 1f, t);

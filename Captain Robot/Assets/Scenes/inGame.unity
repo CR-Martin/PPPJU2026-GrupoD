@@ -3083,16 +3083,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Welcome to Captain Robot!
-
-
-    Use WASD or the jockstick to move.
-
-    Left
-    click to move the camera
-
-    Use space to pick up items, E to drop them and
-    Q to activate them.'
+  m_text: "Welcome to Captain Robot!\n\nUse WASD or the jockstick to move.\nLeft
+    click to move the camera\nUse Q  to pick up items and then activate them \nE
+    to drop them and "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a01bb67a143ca1945bea8595114aa2bd, type: 2}
   m_sharedMaterial: {fileID: -1162087052005525087, guid: a01bb67a143ca1945bea8595114aa2bd, type: 2}

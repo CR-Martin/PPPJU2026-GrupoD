@@ -8,6 +8,7 @@ public class CheatSpawner : MonoBehaviour
     [SerializeField] GameObject inmunePowerUp;
     [SerializeField] GameObject rockPickUp;
     [SerializeField] GameObject bombPickUp;
+    [SerializeField] GameObject timeStopPickUp;
 
     [SerializeField] Transform spawnPoint;
 
@@ -27,6 +28,7 @@ public class CheatSpawner : MonoBehaviour
         Spawn(inmunePowerUp);
         Spawn(rockPickUp);
         Spawn(bombPickUp);
+        Spawn(timeStopPickUp);
 
     }
 

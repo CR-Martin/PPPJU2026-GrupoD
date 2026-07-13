@@ -9,7 +9,8 @@ public class TimeLimit : MonoBehaviour
     [SerializeField] private float totalTimeInSeconds = 60f;
 
     [Header("UI Components")]
-    [SerializeField] private TextMeshProUGUI timerText; 
+    [SerializeField] private TextMeshProUGUI timerText;
+    [SerializeField] private GameObject stopTime;
 
     private float currentTime;
     private bool isTimerRunning = false;
@@ -40,6 +41,7 @@ public class TimeLimit : MonoBehaviour
     {
         if (isTimerRunning)
         {
+            stopTime.SetActive(false);
             if (currentTime > 1)
             {
                 currentTime -= Time.deltaTime;
@@ -52,6 +54,10 @@ public class TimeLimit : MonoBehaviour
                 UpdateTimerDisplay();
                 OnTimerComplete();
             }
+        }
+        else
+        {
+            stopTime.SetActive(true);
         }
     }
 
