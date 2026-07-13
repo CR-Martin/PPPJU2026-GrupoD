@@ -91,5 +91,15 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     private void CheatInmune()
     {
         cheatImmune = !cheatImmune;
+        if (cheatImmune == false)
+        {
+            visual.SetActive(true);
+
+        }
+        else
+        {
+            visual.SetActive(false);
+
+        }
     }
 }

@@ -5254,11 +5254,11 @@ MonoBehaviour:
   sfxVolume: {fileID: 1112497086393553200}
   uiVolume: {fileID: 7696123316745516157}
   lifeUI: {fileID: 3671955388067281578}
-  inmuneSprite: {fileID: 0}
   musicVolumePref: musicVolume
   effectVolumePref: effectVolume
   uiVolumePref: uiVolume
   pauseMenu: {fileID: 6464991973164963727}
+  optionsMenu: {fileID: 42229739324804850}
   winMenu: {fileID: 6816599268511731507}
   gameOverMenu: {fileID: 366818921548930791}
 --- !u!223 &7464316618058323278

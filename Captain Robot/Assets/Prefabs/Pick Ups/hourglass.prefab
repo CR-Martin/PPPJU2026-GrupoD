@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2a161d9ca515d44ebb6a8dd4fde3a95e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.5797232
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2a161d9ca515d44ebb6a8dd4fde3a95e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2a161d9ca515d44ebb6a8dd4fde3a95e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.9795496
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2a161d9ca515d44ebb6a8dd4fde3a95e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeStop
   rb: {fileID: 9001781337489255785}
-  time: 3
+  time: 5
 --- !u!65 &2115470684730705383
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -147,5 +147,5 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0

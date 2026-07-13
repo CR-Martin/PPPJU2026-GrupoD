@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
 
 
     [SerializeField] GameObject pauseMenu;
+    [SerializeField] GameObject optionsMenu;
     [SerializeField] GameObject winMenu;
     [SerializeField] GameObject gameOverMenu;
 
@@ -35,7 +36,7 @@ public class UIManager : MonoBehaviour
 
         PlayerHealth.OnLifeChange += UpdateHealthBar;
 
-
+        TimeLimit.OnTimeOver += GameOver;
     }
     private void Awake()
     {
@@ -85,6 +86,7 @@ public class UIManager : MonoBehaviour
 
         PlayerHealth.OnLifeChange -= UpdateHealthBar;
 
+        TimeLimit.OnTimeOver -= GameOver;
 
 
     }
@@ -154,7 +156,7 @@ public class UIManager : MonoBehaviour
     public void ResumeGameplay()
     {
         pauseMenu.SetActive(false);
-
+        optionsMenu.SetActive(false);
         SetTimeToOne();
     }
     private void SetTimeToZero()
