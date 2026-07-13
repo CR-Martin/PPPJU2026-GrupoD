@@ -8,34 +8,17 @@ public class BootPickup : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            PlayerMovement movement =
-                other.GetComponent<PlayerMovement>();
+            PlayerMovement movement = other.GetComponent<PlayerMovement>();
+            SkateBootPower skateBoot = other.GetComponent<SkateBootPower>();
 
-            SkateBootPower skateBoot =
-                other.GetComponent<SkateBootPower>();
+            if (movement != null) movement.enabled = false;
+            if (skateBoot != null) skateBoot.enabled = true;
 
-            if (movement != null)
-                movement.enabled = false;
-
-            if (skateBoot != null)
-                skateBoot.enabled = true;
-
-            Collider col = GetComponent<Collider>();
-            if (col != null)
-                col.enabled = false;
-
-            Rigidbody rb = GetComponent<Rigidbody>();
-            if (rb != null)
-            {
-                rb.linearVelocity = Vector3.zero;
-                rb.isKinematic = true;
-            }
+            GetComponent<Collider>().enabled = false;
+            GetComponent<Rigidbody>().isKinematic = true;
 
             transform.SetParent(other.transform);
             transform.localPosition = offset;
-            transform.localRotation = Quaternion.identity;
-
-            enabled = false;
         }
     }
 }
