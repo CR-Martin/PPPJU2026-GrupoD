@@ -12,7 +12,7 @@ public class TimeStop : Item
         KinematicState(false);
         rb.useGravity = true;
         OnTimeStop.Invoke(time);
-        AudioManager.Instance.PlayEffect("Fly");
+        AudioManager.Instance.PlayEffect("Time Stop");
         Destroy(gameObject);
     }
 
