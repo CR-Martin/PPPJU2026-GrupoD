@@ -6,6 +6,9 @@ public class AnimationController : MonoBehaviour
     [SerializeField]private Animator animator;
     [SerializeField] private Rigidbody rb;
 
+    private float speedX;
+    private float speedZ;
+
     private void OnEnable()
     {
         PlayerController.OnPickUp += ItemPickUpI;
@@ -49,8 +52,19 @@ public class AnimationController : MonoBehaviour
 
     private void SetRunAnimation()
     {
-        animator.SetFloat("MovementSpeed", Mathf.Abs(rb.linearVelocity.x));
-        animator.SetFloat("MovementSpeed", Mathf.Abs(rb.linearVelocity.z));
+        speedX = Mathf.Abs(rb.linearVelocity.x);
+        speedZ = Mathf.Abs(rb.linearVelocity.z);
+
+        if (speedX > 0.1f || speedZ > 0.1f)
+        {
+            animator.SetFloat("MovementSpeed", 1);
+
+        }
+        else
+        {
+            animator.SetFloat("MovementSpeed", 0);
+        }
+
 
     }
 
