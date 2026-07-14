@@ -50,6 +50,8 @@ MonoBehaviour:
   musicSounds:
   - soundName: Main music
     clip: {fileID: 8300000, guid: 178718981158e6640aee6795c3175b1c, type: 3}
+  - soundName: Boss
+    clip: {fileID: 8300000, guid: f8de297c73db7404da95cdeb543b3d88, type: 3}
   effectSounds:
   - soundName: Bomb
     clip: {fileID: 8300000, guid: e4827223d4b179c48b0c6125ea2f22dd, type: 3}

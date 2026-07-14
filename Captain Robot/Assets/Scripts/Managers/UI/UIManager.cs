@@ -24,6 +24,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject winMenu;
     [SerializeField] GameObject gameOverMenu;
 
+    [SerializeField] private bool isBossLevel;
 
     private void OnEnable()
     {
@@ -70,7 +71,11 @@ public class UIManager : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
-        AudioManager.Instance.PlayMusic("Main music");
+        if (isBossLevel == false)
+        {
+            AudioManager.Instance.PlayMusic("Main music");
+
+        }
         AudioManager.Instance.MusicVolume(PlayerPrefs.GetFloat(musicVolumePref));
         AudioManager.Instance.SfxVolume(PlayerPrefs.GetFloat(effectVolumePref));
         AudioManager.Instance.UIVolume(PlayerPrefs.GetFloat(uiVolumePref));

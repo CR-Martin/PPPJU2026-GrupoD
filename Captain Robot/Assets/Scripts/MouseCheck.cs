@@ -7,6 +7,7 @@ public class MouseCheck : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
+
     }
 
 

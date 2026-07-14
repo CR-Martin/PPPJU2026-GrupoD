@@ -35,20 +35,25 @@ public class TimeLimit : MonoBehaviour
         currentTime = totalTimeInSeconds;
         UpdateTimerDisplay();
         StartTimer();
+
     }
 
     void Update()
-    {
+    {      
         if (isTimerRunning)
         {
             stopTime.SetActive(false);
             if (currentTime > 1)
             {
+                if (timerText == null) return;
+                Debug.Log("never reach");
                 currentTime -= Time.deltaTime;
                 UpdateTimerDisplay();
             }
             else
             {
+                if (timerText == null) return;
+
                 currentTime = 0;
                 isTimerRunning = false;
                 UpdateTimerDisplay();

@@ -337,6 +337,7 @@ MonoBehaviour:
   inmunePowerUp: {fileID: 4654663475784343405, guid: d63b35ecc232c8c428582675567a4a1d, type: 3}
   rockPickUp: {fileID: 5504793588722476648, guid: e228b1e5a223a2a41b605ddf99b2a708, type: 3}
   bombPickUp: {fileID: 361116698676449830, guid: ec6d9764f90e5d64f99a4dc2b5914412, type: 3}
+  timeStopPickUp: {fileID: 1978988487578311528, guid: 389f06afb8d2a7b40b1e4747beffc64a, type: 3}
   spawnPoint: {fileID: 4327507097518841860}
 --- !u!114 &4847673134428045403
 MonoBehaviour:
